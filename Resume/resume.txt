@@ -1,0 +1,80 @@
+Aidan Andrew Daniel Contact
+Passionate about infrastructure and network engineering,
+I’mpursuing a Bachelor of Computer Science (Networks
+&Security) at UTM. With Cisco certifications and hands-on
+experienceto network operations such as switching, routing
+and networkconfiguration. I aim to grow into a
+cloud/infrastructure engineerrole focused on protecting cloud
+systems and optimizing cloudinfrastructure.+60149948979
+aidandanielwe@gmail.com
+Kampung Sunsuron, Tambunan
+Sabah
+Aidan Andrew Daniel (Linkedin)
+W ork Experience Skills
+Technical Skills
+Additional Information
+Student-Athlete
+Bronze medalist for
+athletic(400m hurdle) of
+SUKIPT 2024
+Sabah athlete for SUKMA
+2024High Adaptability
+Time Management
+Tasks Management
+Data Analysis
+Languages: Python, Java,
+C++, C, JavaScript, PHP
+Web Technologies: HTML,
+CSS, Laravel, MySQL
+Tools
+GitHub
+XAMPP
+Packet Tracer
+Microsoft Word Excel,
+Outlook, Teams
+Languages
+English (Fluent)
+Malay (Native)
+Certification
+CCNA: Introduction to
+networks
+CCNA: Switching, Routing,
+and Wireless Essentials
+CCNA: Enterprise Networking,
+Security and Automation.
+Educational BackgroundSoftware Tester Intern - AmBank (M) Berhad 
+Oct 2025 - Feb 2026
+Performed User Acceptance Testing (UAT), regression, sanity, and
+back-testing for AmBank’s digital banking platform (AmOnline)
+Logged, documented, and tracked defects using OpenText ALM
+Verified content accuracy such as translations, localization files, and
+system configurations across web and mobile platforms
+Collaborated with Business Analysts, Test Managers, Assistant
+Managers, and external vendors
+Followed detailed testing guidelines, test plans, and compliance
+standards in a highly regulated banking environment
+Bachelor in Computer Science (Computer Network and Security)
+with Honours.
+Universiti Teknology Malaysia (UTM)
+ Oct 2022 - Present
+Current CGPA : 3.77
+Athletics team of UTMProjects (Selected)
+Blockchain-Powered Investment Tracking System
+Apr 2026 - Present | Solidity, Laravel, Vue, MySQL
+Final Year Project
+A decentralized platform for tracking and managing investments
+Secure, transparent transaction logging
+Real-time updates and investors insights
+User-friendly UI, a simple web-based dashboard.
+Mua’llim: Quran Class Management System 
+Oct 2024 - Jan 2025 | Laravel PHP, MySQL, JavaScript, CSS
+Developed a web=based platform to manage Quran learning classes
+Implemented role-based access, class scheduling, attendance-tracking
+and real-time updates
+Utilized Laravel framework and MySQL database
+eBook Review and Recommendation Tracker
+Mar 2024 - June 2024 | HTML, PHP, JavaScript, CSS
+Created a web platform for eBooks reviews, rating and
+recommendation
+Implemented full CRUD operations
+Designed a user-friendly UI
