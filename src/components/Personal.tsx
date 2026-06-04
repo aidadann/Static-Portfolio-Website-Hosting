@@ -119,10 +119,12 @@ export function Personal() {
         {/* Horizontal Scroll Container - Now with visible scrollbar */}
         <div className="flex gap-6 overflow-x-auto pb-6 pt-4 snap-x snap-mandatory custom-scrollbar">
           {[
-            { title: "The Architect", desc: "Always drawing cloud diagrams and mapping infrastructure before writing a single line of Terraform.", img: "/architect.jpg" },
-            { title: "The Athlete", desc: "Pushing limits on the track. Training hard for the next 400m hurdles.", img: "/athlete.jpg" },
-            { title: "The Troubleshooter", desc: "Staring at terminal logs until the matrix reveals itself and the bug is fixed.", img: "/troubleshooter.jpg" },
-            { title: "The Learner", desc: "Endlessly studying. Currently diving deep into Web3 and advanced cloud automation.", img: "/learner.jpg" },
+            { title: "The Athlete", desc: "Whether it's football, volleyball, or running on the track, I'm always ready for a game.", img: "/sports.jpg" },
+            { title: "The Gamer", desc: "Getting lost in massive open-world RPGs is my favorite way to decompress after a long day.", img: "/games.jpg" },
+            { title: "The Vibe Catcher", desc: "I listen to almost every kind of music. My playlists are a chaotic, beautiful mess of genres.", img: "/music-card.jpg" },
+            { title: "The Traveler", desc: "My bucket list is endless. I hope to travel the world and explore as many new places as possible.", img: "/travel.jpg" },
+            { title: "The Creator", desc: "I love everything about computers, especially that magical moment when my code finally comes to life.", img: "/creator.jpg" },
+            { title: "The Bear", desc: "I take my rest extremely seriously. My uninterrupted sleeping time is sacred and non-negotiable.", img: "/sleep.jpg" },
           ].map((item, i) => (
             <motion.div
               key={i}
