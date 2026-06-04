@@ -39,7 +39,10 @@ export function Professional() {
             <h3 className="text-2xl font-bold text-white mb-1">Software Tester Intern</h3>
             <p className="text-accent font-medium mb-4">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
             <p className="text-muted leading-relaxed max-w-3xl">
-              Performed User Acceptance Testing (UAT), regression, sanity, and back-testing for AmBank's digital banking platform (AmOnline).
+              Performed User Acceptance Testing (UAT), regression, sanity, and back-testing for AmBank's digital banking platform (AmOnline).<br/>
+              <span className="block mt-2">• Logged, documented, and tracked defects using OpenText ALM.</span>
+              <span className="block mt-1">• Verified content accuracy (translations, localization, system configs) across web and mobile platforms.</span>
+              <span className="block mt-1">• Collaborated with BAs and Test Managers, following strict banking compliance standards.</span>
             </p>
           </div>
         </div>
@@ -51,10 +54,10 @@ export function Professional() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { icon: Code, label: "Frontend", desc: "React, Vue, Next.js, Tailwind" },
-            { icon: Terminal, label: "Backend", desc: "Node.js, Laravel, Python" },
-            { icon: Database, label: "Database", desc: "PostgreSQL, MySQL, Redis" },
-            { icon: Cloud, label: "Infrastructure", desc: "Azure, Terraform, Docker" },
+            { icon: Cloud, label: "Cloud & DevOps", desc: "Azure, AWS, Terraform, GitHub Actions" },
+            { icon: Terminal, label: "Networking", desc: "CCNA, DevNet, Routing & Switching" },
+            { icon: Code, label: "Languages", desc: "Python, Bash, JS, PHP, Solidity, C/C++" },
+            { icon: Database, label: "Databases", desc: "Azure Cosmos DB, MySQL" },
           ].map((skill, i) => (
             <motion.div
               key={i}

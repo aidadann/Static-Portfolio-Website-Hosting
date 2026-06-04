@@ -5,16 +5,16 @@ import { ExternalLink, GitBranch } from "lucide-react";
 
 const PROJECTS = [
   {
-    title: "Blockchain Tracker",
-    description: "A hybrid on-chain/off-chain investment tracking system with Vue 3, Laravel, and Solidity smart contracts.",
-    tags: ["Solidity", "Laravel", "Vue.js", "Web3"],
+    title: "Blockchain Investment Tracker",
+    description: "Hybrid on-chain/off-chain system. Built secure Solidity smart contracts to permanently ledger investment records. Developed robust REST API in Laravel 11 for rapid caching.",
+    tags: ["Solidity", "Laravel 11", "Vue 3", "Hardhat"],
     github: "#",
     demo: "#",
   },
   {
     title: "Azure Cloud Resume",
-    description: "Fully automated CI/CD pipeline and Infrastructure as Code using Terraform, deployed on Azure Static Web Apps.",
-    tags: ["Azure", "Terraform", "GitHub Actions"],
+    description: "Designed a full-stack, serverless cloud architecture following DevOps/IaC best practices. Engineered GitHub Actions workflows to automate testing and secure deployments.",
+    tags: ["Azure", "Terraform", "GitHub Actions", "CI/CD"],
     github: "#",
     demo: "#",
   },

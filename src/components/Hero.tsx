@@ -23,7 +23,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-lg md:text-xl font-medium text-muted mb-4"
           >
-            Cloud Infrastructure Engineer
+            Aspiring Cloud Infrastructure Engineer
           </motion.p>
 
           <motion.h1
@@ -107,7 +107,7 @@ export function Hero() {
               }}
               className="absolute inset-0 bg-accent rounded-full blur-[50px] opacity-50"
             />
-            
+
             {/* Spinning Outer Layer */}
             <motion.div
               animate={{ rotate: 360 }}
