@@ -3,7 +3,7 @@
 Welcome to my personal portfolio website! This project is a highly dynamic, visually stunning, and premium portfolio built to showcase my professional background as an aspiring Cloud Infrastructure Engineer, as well as my personal hobbies and interests.
 
 ## 🚀 Live Demo
-You can view the live website here: [Aidan Andrew Daniel Portfolio](https://thankful-sky-05855b100.7.azurestaticapps.net)
+You can view the live website here: [Aidan Andrew Daniel Portfolio](https://gray-pebble-032547c10.7.azurestaticapps.net/)
 
 ---
 
