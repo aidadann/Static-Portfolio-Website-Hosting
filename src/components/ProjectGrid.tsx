@@ -8,22 +8,19 @@ const PROJECTS = [
     title: "Blockchain Investment Tracker",
     description: "Hybrid on-chain/off-chain system. Built secure Solidity smart contracts to permanently ledger investment records. Developed robust REST API in Laravel 11 for rapid caching.",
     tags: ["Solidity", "Laravel 11", "Vue 3", "Hardhat"],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/aidadann/Blockchain-Powered-Investment-Tracking-System",
   },
   {
     title: "Azure Cloud Resume",
     description: "Designed a full-stack, serverless cloud architecture following DevOps/IaC best practices. Engineered GitHub Actions workflows to automate testing and secure deployments.",
     tags: ["Azure", "Terraform", "GitHub Actions", "CI/CD"],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/aidadann/Cloud-Resume",
   },
   {
     title: "URL Scam Checker",
     description: "Modular URL analysis system integrating heuristic checks and threat intelligence APIs to prevent SSRF and detect malicious URLs.",
     tags: ["Security", "Laravel", "Vue.js"],
     github: "#",
-    demo: "#",
   },
 ];
 
