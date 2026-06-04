@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aidan Andrew Daniel - Portfolio Website
 
-## Getting Started
+Welcome to my personal portfolio website! This project is a highly dynamic, visually stunning, and premium portfolio built to showcase my professional background as an aspiring Cloud Infrastructure Engineer, as well as my personal hobbies and interests.
 
-First, run the development server:
+## 🚀 Live Demo
+You can view the live website here: [Aidan Andrew Daniel Portfolio](https://thankful-sky-05855b100.7.azurestaticapps.net)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technology Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project was built with modern web development tools and best practices:
+- **Framework:** [Next.js (App Router)](https://nextjs.org/) - Utilizing React Server Components and Static Site Generation (SSG).
+- **Styling:** [Tailwind CSS (v4)](https://tailwindcss.com/) - Custom-configured for a premium dark mode aesthetic with vibrant red (`#ff0033`) accents and glassmorphism UI elements.
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) - Delivering smooth scroll animations, tab transitions, and dynamic hover effects.
+- **Icons:** [Lucide React](https://lucide.dev/) - Crisp, consistent, and customizable SVG icons.
+- **Deployment:** [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) - Fully automated CI/CD deployment via GitHub Actions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Key Features
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Dual-Sided Architecture (Professional vs. Personal)
+The portfolio is designed with two completely distinct user experiences that seamlessly swap using a floating navigation dock:
+- **Professional Mode:** A sleek, tech-focused landing page detailing my core competencies (Cloud & DevOps, Networking, Programming), certifications (CCNA, DevNet), work experience, and featured engineering projects.
+- **Personal Mode:** A casual, interactive "off-duty" mode featuring:
+  - **Asymmetrical Hobbies Bento Grid:** Highlighting my passions (Athletics, Photography, Gaming).
+  - **Horizontal Flashcards:** "Components of Aidan" - draggable/scrollable cards detailing different facets of my personality.
+  - **Functional Music Player:** An interactive widget to play my favorite tracks (JAEHYUN, Daniel Caesar, Zack Tabudlo).
+  - **Daily Routine Timeline:** A beautifully styled vertical timeline tracking my daily habits.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. High-Performance Static Export
+Configured specifically for `output: export`, Next.js compiles the entire application into highly optimized, standalone HTML/CSS/JS files, ensuring lightning-fast load times globally across Azure's CDN.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Fully Automated CI/CD
+The project features a custom GitHub Actions workflow (`.github/workflows/azure-static-web-apps-gray-pebble-032547c10.yml`) that bypasses Microsoft Oryx to manually build the Next.js application on an Ubuntu runner, and seamlessly publishes the `out` directory to Azure Static Web Apps upon every push to the `main` branch.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💻 Local Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Want to run this project locally? Follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/aidadann/Static-Portfolio-Website-Hosting.git
+   cd Static-Portfolio-Website-Hosting
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application running locally.
+
+---
+
+## 🎨 Asset Configuration
+
+If you're cloning this repository, you will need to supply your own media assets in the `public/` directory for the UI to fully render:
+- `profile.jpg` - Main hero portrait.
+- `athletics.jpg`, `photography.jpg`, `gaming.jpg` - Bento box backgrounds.
+- `sports.jpg`, `games.jpg`, `music-card.jpg`, `travel.jpg`, `creator.jpg`, `sleep.jpg` - Flashcard backgrounds.
+- `music/try-again.mp3`, `music/toronto-2014.mp3`, `music/pano.mp3` - Audio files for the music player.
+
+---
+
+## 📬 Contact Me
+
+Feel free to reach out to me for opportunities or just to chat about cloud architecture!
+- **LinkedIn:** [Aidan Andrew Daniel](https://www.linkedin.com/in/aidan-andrew-daniel-b77764255/)
+- **GitHub:** [@aidadann](https://github.com/aidadann)

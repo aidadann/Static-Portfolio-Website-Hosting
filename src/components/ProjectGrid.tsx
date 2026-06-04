@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, GitBranch } from "lucide-react";
+import { GitBranch } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -41,7 +41,7 @@ export function ProjectGrid() {
           className="group relative flex flex-col justify-between p-6 rounded-2xl bg-card border border-card-border hover:border-accent/50 hover:shadow-[0_0_30px_rgba(255,0,51,0.15)] transition-all overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-0 pointer-events-none" />
-          
+
           <div className="z-10">
             <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
               {project.title}
@@ -72,15 +72,6 @@ export function ProjectGrid() {
               >
                 <GitBranch className="w-4 h-4" />
                 Source
-              </a>
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Live Demo
               </a>
             </div>
           </div>
