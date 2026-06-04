@@ -66,6 +66,8 @@ export function ProjectGrid() {
             <div className="flex items-center gap-4">
               <a
                 href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
                 <GitBranch className="w-4 h-4" />
@@ -73,6 +75,8 @@ export function ProjectGrid() {
               </a>
               <a
                 href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />

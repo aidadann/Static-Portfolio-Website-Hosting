@@ -22,8 +22,26 @@ export function Professional() {
           <h3 className="text-2xl font-bold text-white mb-1">Bachelor of Computer Science (Computer Network and Security)</h3>
           <p className="text-accent font-medium mb-4">Universiti Teknologi Malaysia • 2022 - 2026</p>
           <p className="text-muted leading-relaxed max-w-3xl">
-            Focus on Software Engineering, Cloud Computing, and Network Security.
+            Current CGPA: 3.77 <br />
+            Athletics team of UTM
           </p>
+        </div>
+      </div>
+
+      <div className="mb-24">
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Work Experience</h2>
+        <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
+
+        <div className="relative border-l border-card-border pl-8 ml-4 space-y-12">
+          {/* Experience Item 1 */}
+          <div className="relative">
+            <div className="absolute w-4 h-4 bg-accent rounded-full -left-[40.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]" />
+            <h3 className="text-2xl font-bold text-white mb-1">Software Tester Intern</h3>
+            <p className="text-accent font-medium mb-4">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
+            <p className="text-muted leading-relaxed max-w-3xl">
+              Performed User Acceptance Testing (UAT), regression, sanity, and back-testing for AmBank's digital banking platform (AmOnline).
+            </p>
+          </div>
         </div>
       </div>
 

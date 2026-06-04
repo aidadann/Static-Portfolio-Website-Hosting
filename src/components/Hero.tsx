@@ -55,6 +55,8 @@ export function Hero() {
           >
             <a
               href="https://thankful-sky-05855b100.7.azurestaticapps.net"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-accent-hover transition-colors shadow-[0_0_20px_rgba(255,0,51,0.4)]"
             >
               <FileText className="w-5 h-5" />
@@ -64,6 +66,8 @@ export function Hero() {
             <div className="flex items-center gap-3 ml-2 mt-4 sm:mt-0">
               <a
                 href="https://www.linkedin.com/in/aidan-andrew-daniel-b77764255/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full border border-card-border bg-card hover:border-accent hover:text-accent transition-all"
                 aria-label="LinkedIn"
               >
@@ -71,6 +75,8 @@ export function Hero() {
               </a>
               <a
                 href="https://github.com/aidadann"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-12 h-12 rounded-full border border-card-border bg-card hover:border-accent hover:text-accent transition-all"
                 aria-label="GitHub"
               >
@@ -100,6 +106,13 @@ export function Hero() {
                 ease: "easeInOut"
               }}
               className="absolute inset-0 bg-accent rounded-full blur-[50px] opacity-50"
+            />
+            
+            {/* Spinning Outer Layer */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-6 rounded-full border-2 border-dashed border-accent/40"
             />
 
             {/* Image Container */}
