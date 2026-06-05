@@ -120,12 +120,12 @@ export function Personal() {
 
         {/* 3D Infinite Scroll Container */}
         <Carousel3D items={[
-            { title: "The Athlete", desc: "Whether it's football, volleyball, or running on the track, I'm always ready for a game.", img: "/sports.jpg" },
-            { title: "The Gamer", desc: "Getting lost in massive open-world RPGs is my favorite way to decompress after a long day.", img: "/games.jpg" },
-            { title: "The Vibe Catcher", desc: "I listen to almost every kind of music. My playlists are a chaotic, beautiful mess of genres.", img: "/music-card.jpg" },
-            { title: "The Traveler", desc: "My bucket list is endless. I hope to travel the world and explore as many new places as possible.", img: "/travel.jpg" },
-            { title: "The Creator", desc: "I love everything about computers, especially that magical moment when my code finally comes to life.", img: "/creator.jpg" },
-            { title: "The Bear", desc: "I take my rest extremely seriously. My uninterrupted sleeping time is sacred and non-negotiable.", img: "/sleep.jpg" },
+          { title: "The Athlete", desc: "Whether it's football, volleyball, or running on the track, I'm always ready for a game.", img: "/sports.jpg" },
+          { title: "The Gamer", desc: "Getting lost in massive open-world RPGs is my favorite way to decompress after a long day.", img: "/games.jpg" },
+          { title: "The Vibe Catcher", desc: "I listen to almost every kind of music. My playlists are a chaotic, beautiful mess of genres.", img: "/music-card.jpg" },
+          { title: "The Traveler", desc: "My bucket list is endless. I hope to travel the world and explore as many new places as possible.", img: "/travel.jpg" },
+          { title: "The Creator", desc: "I love everything about computers, especially that magical moment when my code finally comes to life.", img: "/creator.jpg" },
+          { title: "The Bear", desc: "I take my rest extremely seriously. My uninterrupted sleeping time is sacred and non-negotiable.", img: "/sleep.jpg" },
         ]} />
       </div>
 
@@ -198,7 +198,7 @@ export function Personal() {
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent before:via-card-border before:to-transparent">
 
               {[
-                { time: "08:00 AM", label: "Wake up & Coffee", icon: Coffee },
+                { time: "08:00 AM", label: "Wake up", icon: Coffee },
                 { time: "10:00 AM", label: "Work / Gaming", icon: Code },
                 { time: "05:00 PM", label: "Run / Workout", icon: Activity },
                 { time: "09:00 PM", label: "Personal", icon: Heart },

@@ -20,7 +20,7 @@ const PROJECTS = [
     title: "URL Scam Checker",
     description: "Modular URL analysis system integrating heuristic checks and threat intelligence APIs to prevent SSRF and detect malicious URLs.",
     tags: ["Security", "Laravel", "Vue.js"],
-    github: "#",
+    github: "https://github.com/aidadann/URL-Scam-Checker-System",
   },
 ];
 
