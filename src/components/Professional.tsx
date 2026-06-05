@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ProjectGrid } from "./ProjectGrid";
+import { Contact } from "./Contact";
 import { Terminal, Database, Cloud, Code } from "lucide-react";
 
 export function Professional() {
@@ -72,11 +73,13 @@ export function Professional() {
         </div>
       </div>
 
-      <div className="mb-20">
+      <div className="mb-32">
         <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Featured Work</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
         <ProjectGrid />
       </div>
+
+      <Contact />
     </motion.div>
   );
 }

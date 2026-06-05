@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Music, Play, Pause, SkipForward, SkipBack, Heart, Clock, Code, Activity, Moon, Coffee } from "lucide-react";
 import Image from "next/image";
 
+import { Carousel3D } from "./Carousel3D";
+
 const SONGS = [
   { title: "Try Again", artist: "JAEHYUN, d.ear", src: "/music/try-again.mp3" },
   { title: "Toronto 2014", artist: "Daniel Caesar", src: "/music/toronto-2014.mp3" },
@@ -82,7 +84,7 @@ export function Personal() {
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
               <h3 className="text-2xl font-bold text-white mb-2">Traveling</h3>
-              <p className="text-gray-300 text-sm">Capturing moments and exploring aesthetics.</p>
+              <p className="text-gray-300 text-sm">Capturing moments while exploring the world.</p>
             </div>
           </motion.div>
 
@@ -116,33 +118,15 @@ export function Personal() {
         <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Components of Aidan</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
-        {/* Horizontal Scroll Container - Now with visible scrollbar */}
-        <div className="flex gap-6 overflow-x-auto pb-6 pt-4 snap-x snap-mandatory custom-scrollbar">
-          {[
+        {/* 3D Infinite Scroll Container */}
+        <Carousel3D items={[
             { title: "The Athlete", desc: "Whether it's football, volleyball, or running on the track, I'm always ready for a game.", img: "/sports.jpg" },
             { title: "The Gamer", desc: "Getting lost in massive open-world RPGs is my favorite way to decompress after a long day.", img: "/games.jpg" },
             { title: "The Vibe Catcher", desc: "I listen to almost every kind of music. My playlists are a chaotic, beautiful mess of genres.", img: "/music-card.jpg" },
             { title: "The Traveler", desc: "My bucket list is endless. I hope to travel the world and explore as many new places as possible.", img: "/travel.jpg" },
             { title: "The Creator", desc: "I love everything about computers, especially that magical moment when my code finally comes to life.", img: "/creator.jpg" },
             { title: "The Bear", desc: "I take my rest extremely seriously. My uninterrupted sleeping time is sacred and non-negotiable.", img: "/sleep.jpg" },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10 }}
-              className="min-w-[320px] md:min-w-[400px] snap-center shrink-0 h-[400px] rounded-3xl bg-card border border-card-border relative overflow-hidden group shadow-lg"
-            >
-              <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
-              {/* Dark top gradient for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/40 to-transparent" />
-
-              {/* Text moved to top */}
-              <div className="relative z-10 p-8 flex flex-col h-full justify-start">
-                <h3 className="text-3xl font-bold text-white mb-4">{item.title}</h3>
-                <p className="text-gray-200 leading-relaxed">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        ]} />
       </div>
 
       {/* Misc Stats */}
@@ -217,7 +201,7 @@ export function Personal() {
                 { time: "08:00 AM", label: "Wake up & Coffee", icon: Coffee },
                 { time: "10:00 AM", label: "Work / Gaming", icon: Code },
                 { time: "05:00 PM", label: "Run / Workout", icon: Activity },
-                { time: "09:00 PM", label: "Girlfriend", icon: Heart },
+                { time: "09:00 PM", label: "Personal", icon: Heart },
                 { time: "11:00 PM", label: "Sleep", icon: Moon },
               ].map((step, i) => (
                 <motion.div
