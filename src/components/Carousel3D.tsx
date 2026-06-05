@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -15,9 +15,40 @@ interface Carousel3DProps {
 
 export function Carousel3D({ items }: Carousel3DProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const next = () => setActiveIndex((prev) => (prev + 1) % items.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let isScrolling = false;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Prevent vertical page scroll when hovering the carousel
+      e.preventDefault();
+
+      if (isScrolling) return;
+
+      isScrolling = true;
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        setActiveIndex((prev) => (prev + 1) % items.length);
+      } else if (e.deltaY < 0 || e.deltaX < 0) {
+        setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+      }
+
+      // Wait 400ms before accepting the next scroll tick to prevent flying through cards
+      setTimeout(() => {
+        isScrolling = false;
+      }, 400);
+    };
+
+    // Use passive: false to allow e.preventDefault()
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, [items.length]);
 
   // Helper to calculate shortest offset in a circular array
   const getOffset = (index: number) => {
@@ -32,7 +63,7 @@ export function Carousel3D({ items }: Carousel3DProps) {
   };
 
   return (
-    <div className="relative w-full h-[480px] flex items-center justify-center overflow-x-clip overflow-y-visible py-10" style={{ perspective: 1200 }}>
+    <div ref={containerRef} className="relative w-full h-[480px] flex items-center justify-center overflow-x-clip overflow-y-visible py-10 mt-12" style={{ perspective: 1200 }}>
       {/* Edge gradient fade */}
       <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
