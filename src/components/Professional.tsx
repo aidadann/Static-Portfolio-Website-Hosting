@@ -21,7 +21,7 @@ export function Professional() {
 
         <div className="relative pl-8 ml-4">
           {/* Animated vertical line */}
-          <motion.div 
+          <motion.div
             className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-card-border to-transparent origin-top"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -29,7 +29,7 @@ export function Professional() {
             transition={{ duration: 1.5, ease: "circOut" }}
           />
 
-          <motion.div 
+          <motion.div
             className="absolute w-4 h-4 bg-accent rounded-full -left-[7.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -51,7 +51,7 @@ export function Professional() {
 
         <div className="relative pl-8 ml-4 space-y-12">
           {/* Animated vertical line */}
-          <motion.div 
+          <motion.div
             className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-card-border to-transparent origin-top"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -61,7 +61,7 @@ export function Professional() {
 
           {/* Experience Item 1 */}
           <div className="relative">
-            <motion.div 
+            <motion.div
               className="absolute w-4 h-4 bg-accent rounded-full -left-[39.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -107,7 +107,7 @@ export function Professional() {
       </div>
 
       <div className="mb-32">
-        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Featured Work</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Featured Projects</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
         <ProjectGrid />
       </div>

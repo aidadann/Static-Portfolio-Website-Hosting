@@ -155,11 +155,14 @@ export function Personal() {
                   animate={{ rotate: isPlaying ? 360 : 0 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent w-full h-full" />
                   <div className="absolute inset-[3px] border-[0.5px] border-white/10 rounded-full" />
                   <div className="absolute inset-[7px] border-[0.5px] border-white/10 rounded-full" />
                   <div className="absolute inset-[11px] border-[0.5px] border-white/10 rounded-full" />
-                  <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center shadow-inner relative z-10">
-                    <div className="w-1.5 h-1.5 bg-black rounded-full" />
+                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center shadow-inner relative z-10 overflow-hidden">
+                    {/* Asymmetrical label design makes rotation obvious */}
+                    <div className="absolute top-0 left-0 w-full h-1/2 bg-white/20" />
+                    <div className="w-1.5 h-1.5 bg-black rounded-full relative z-20" />
                   </div>
                 </motion.div>
                 <span className="text-xs font-bold tracking-widest text-muted uppercase">On Repeat</span>
