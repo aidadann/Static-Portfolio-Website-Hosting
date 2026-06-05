@@ -32,7 +32,7 @@ export function Carousel3D({ items }: Carousel3DProps) {
   };
 
   return (
-    <div className="relative w-full h-[550px] flex items-center justify-center overflow-hidden py-10" style={{ perspective: 1200 }}>
+    <div className="relative w-full h-[480px] flex items-center justify-center overflow-x-clip overflow-y-visible py-10" style={{ perspective: 1200 }}>
       {/* Edge gradient fade */}
       <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
@@ -49,7 +49,7 @@ export function Carousel3D({ items }: Carousel3DProps) {
             onClick={() => setActiveIndex(i)}
             initial={false}
             animate={{
-              x: `calc(-50% + ${offset * 180}px)`, // Adjust 180px for overlap spacing
+              x: `calc(-50% + ${offset * 140}px)`, // Tighter spacing so they don't get cut off on edges
               y: "-50%",
               scale: isCenter ? 1 : Math.max(0.6, 1 - absOffset * 0.15),
               rotateY: offset * -25,
@@ -87,7 +87,7 @@ export function Carousel3D({ items }: Carousel3DProps) {
       })}
 
       {/* Controls */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-6 z-30">
+      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 z-30">
         <button onClick={prev} className="w-12 h-12 rounded-full bg-black/80 border border-card-border flex items-center justify-center hover:bg-accent hover:border-accent hover:scale-110 transition-all shadow-lg">
           <ChevronLeft className="w-6 h-6 text-white pr-0.5" />
         </button>
