@@ -76,7 +76,7 @@ export function Carousel3D({ items }: Carousel3DProps) {
         return (
           <motion.div
             key={i}
-            className="absolute top-1/2 left-1/2 -translate-y-1/2 w-[280px] sm:w-[320px] md:w-[400px] h-[400px] rounded-3xl bg-card border border-card-border overflow-hidden shadow-2xl cursor-pointer"
+            className="absolute top-1/2 left-1/2 w-[280px] sm:w-[320px] md:w-[400px] h-[400px] rounded-3xl bg-card border border-card-border overflow-hidden shadow-2xl cursor-pointer"
             onClick={() => setActiveIndex(i)}
             initial={false}
             animate={{
