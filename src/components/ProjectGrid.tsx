@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GitBranch } from "lucide-react";
+import { SpotlightCard } from "./SpotlightCard";
 
 const PROJECTS = [
   {
@@ -35,43 +36,45 @@ export function ProjectGrid() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           whileHover={{ y: -5 }}
-          className="group relative flex flex-col justify-between p-6 rounded-2xl bg-card border border-card-border hover:border-accent/50 hover:shadow-[0_0_30px_rgba(255,0,51,0.15)] transition-all overflow-hidden"
+          className="group"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-0 pointer-events-none" />
+          <SpotlightCard className="flex flex-col justify-between p-6 h-full">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-0 pointer-events-none" />
 
-          <div className="z-10">
-            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-              {project.title}
-            </h3>
-            <p className="text-muted text-sm mb-6 leading-relaxed">
-              {project.description}
-            </p>
-          </div>
+            <div className="z-10">
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-muted text-sm mb-6 leading-relaxed">
+                {project.description}
+              </p>
+            </div>
 
-          <div className="z-10 mt-auto">
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 text-xs font-medium text-white/80 bg-white/5 rounded-full border border-white/10"
+            <div className="z-10 mt-auto">
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs font-medium text-white/80 bg-white/5 rounded-full border border-white/10"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors z-20 relative"
                 >
-                  {tag}
-                </span>
-              ))}
+                  <GitBranch className="w-4 h-4" />
+                  Source
+                </a>
+              </div>
             </div>
-
-            <div className="flex items-center gap-4">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
-              >
-                <GitBranch className="w-4 h-4" />
-                Source
-              </a>
-            </div>
-          </div>
+          </SpotlightCard>
         </motion.div>
       ))}
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Music, Play, Pause, SkipForward, SkipBack, Heart, Clock, Code, Activity, Moon, Coffee } from "lucide-react";
 import Image from "next/image";
 
@@ -17,6 +17,9 @@ export function Personal() {
   const [currentSong, setCurrentSong] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const { scrollYProgress } = useScroll();
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -65,8 +68,10 @@ export function Personal() {
             className="md:col-span-2 row-span-1 rounded-3xl bg-card border border-card-border relative overflow-hidden group shadow-lg"
           >
             {/* User to upload /athletics.jpg */}
-            <Image src="/athletics.jpg" alt="Athletics" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent" />
+            <motion.div style={{ y: parallaxY }} className="absolute -inset-[25%] pointer-events-none">
+              <Image src="/athletics.jpg" alt="Athletics" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
               <h3 className="text-3xl font-bold text-white mb-2">Athletics</h3>
@@ -79,8 +84,10 @@ export function Personal() {
             whileHover={{ y: -5 }}
             className="md:col-span-1 row-span-1 rounded-3xl bg-card border border-card-border relative overflow-hidden group shadow-lg"
           >
-            <Image src="/traveling.jpg" alt="traveling" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent" />
+            <motion.div style={{ y: parallaxY }} className="absolute -inset-[25%] pointer-events-none">
+              <Image src="/traveling.jpg" alt="traveling" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
               <h3 className="text-2xl font-bold text-white mb-2">Traveling</h3>
@@ -93,8 +100,10 @@ export function Personal() {
             whileHover={{ y: -5 }}
             className="md:col-span-1 row-span-1 rounded-3xl bg-card border border-card-border relative overflow-hidden group shadow-lg"
           >
-            <Image src="/gaming.jpg" alt="Gaming" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent" />
+            <motion.div style={{ y: parallaxY }} className="absolute -inset-[25%] pointer-events-none">
+              <Image src="/gaming.jpg" alt="Gaming" fill className="object-cover transition-transform duration-700 group-hover:scale-105" onError={(e) => e.currentTarget.style.display = 'none'} />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
               <h3 className="text-2xl font-bold text-white mb-2">Gaming</h3>
@@ -140,7 +149,19 @@ export function Personal() {
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-all duration-700" />
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-8">
-                <Music className="w-6 h-6 text-accent" />
+                {/* Animated Vinyl Record */}
+                <motion.div 
+                  className="w-16 h-16 rounded-full border-[3px] border-[#111] bg-black flex items-center justify-center relative overflow-hidden shadow-[0_0_15px_rgba(255,0,51,0.2)]"
+                  animate={{ rotate: isPlaying ? 360 : 0 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <div className="absolute inset-[3px] border-[0.5px] border-white/10 rounded-full" />
+                  <div className="absolute inset-[7px] border-[0.5px] border-white/10 rounded-full" />
+                  <div className="absolute inset-[11px] border-[0.5px] border-white/10 rounded-full" />
+                  <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center shadow-inner relative z-10">
+                    <div className="w-1.5 h-1.5 bg-black rounded-full" />
+                  </div>
+                </motion.div>
                 <span className="text-xs font-bold tracking-widest text-muted uppercase">On Repeat</span>
               </div>
               <div className="space-y-4">

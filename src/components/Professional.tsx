@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ProjectGrid } from "./ProjectGrid";
 import { Contact } from "./Contact";
+import { SpotlightCard } from "./SpotlightCard";
 import { Terminal, Database, Cloud, Code } from "lucide-react";
 
 export function Professional() {
@@ -18,8 +19,23 @@ export function Professional() {
         <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Education</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
-        <div className="relative border-l border-card-border pl-8 ml-4">
-          <div className="absolute w-4 h-4 bg-accent rounded-full -left-[8.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]" />
+        <div className="relative pl-8 ml-4">
+          {/* Animated vertical line */}
+          <motion.div 
+            className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-card-border to-transparent origin-top"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "circOut" }}
+          />
+
+          <motion.div 
+            className="absolute w-4 h-4 bg-accent rounded-full -left-[7.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
+            initial={{ scale: 0, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          />
           <h3 className="text-2xl font-bold text-white mb-1">Bachelor of Computer Science (Computer Network and Security)</h3>
           <p className="text-accent font-medium mb-4">Universiti Teknologi Malaysia • 2022 - 2026</p>
           <p className="text-muted leading-relaxed max-w-3xl">
@@ -33,10 +49,25 @@ export function Professional() {
         <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Work Experience</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
-        <div className="relative border-l border-card-border pl-8 ml-4 space-y-12">
+        <div className="relative pl-8 ml-4 space-y-12">
+          {/* Animated vertical line */}
+          <motion.div 
+            className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-card-border to-transparent origin-top"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "circOut" }}
+          />
+
           {/* Experience Item 1 */}
           <div className="relative">
-            <div className="absolute w-4 h-4 bg-accent rounded-full -left-[40.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]" />
+            <motion.div 
+              className="absolute w-4 h-4 bg-accent rounded-full -left-[39.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            />
             <h3 className="text-2xl font-bold text-white mb-1">Software Tester Intern</h3>
             <p className="text-accent font-medium mb-4">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
             <p className="text-muted leading-relaxed max-w-3xl">
@@ -63,11 +94,13 @@ export function Professional() {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl bg-card border border-card-border hover:border-accent/50 transition-colors"
+              className="group"
             >
-              <skill.icon className="w-8 h-8 text-accent mb-4" />
-              <h3 className="text-lg font-semibold text-white mb-2">{skill.label}</h3>
-              <p className="text-sm text-muted">{skill.desc}</p>
+              <SpotlightCard className="p-6 h-full">
+                <skill.icon className="w-8 h-8 text-accent mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">{skill.label}</h3>
+                <p className="text-sm text-muted">{skill.desc}</p>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

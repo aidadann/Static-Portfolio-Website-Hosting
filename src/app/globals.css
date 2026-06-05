@@ -25,3 +25,10 @@ body {
   background-color: var(--color-accent);
   color: #ffffff;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
