@@ -8,9 +8,8 @@ import Image from "next/image";
 import { Carousel3D } from "./Carousel3D";
 
 const SONGS = [
-  { title: "Try Again", artist: "JAEHYUN, d.ear", src: "/music/try-again.mp3" },
-  { title: "Toronto 2014", artist: "Daniel Caesar", src: "/music/toronto-2014.mp3" },
-  { title: "Pano", artist: "Zack Tabudlo", src: "/music/pano.mp3" },
+  { title: "Life Will Change", artist: "Shoji Meguro", src: "/music/life-will-change.mp3" },
+  { title: "Beneath the Mask", artist: "Shoji Meguro", src: "/music/beneath-the-mask.mp3" },
 ];
 
 export function Personal() {
@@ -172,8 +171,12 @@ export function Personal() {
                   <div
                     key={i}
                     onClick={() => {
-                      setCurrentSong(i);
-                      setIsPlaying(true);
+                      if (currentSong === i) {
+                        setIsPlaying(!isPlaying);
+                      } else {
+                        setCurrentSong(i);
+                        setIsPlaying(true);
+                      }
                     }}
                     className={`flex items-center gap-4 group/song cursor-pointer p-3 rounded-xl border transition-colors ${currentSong === i ? 'bg-accent/10 border-accent/30' : 'bg-black/20 border-transparent hover:border-accent/30'
                       }`}
