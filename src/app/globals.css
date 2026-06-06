@@ -28,7 +28,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Persona 5 Noise Overlay */
 .noise-overlay {
-  position: relative;
 }
 .noise-overlay::after {
   content: "";
