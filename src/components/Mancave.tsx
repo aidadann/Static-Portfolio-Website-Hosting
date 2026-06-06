@@ -22,6 +22,20 @@ const GAMES = [
   { id: 10, title: "The Sims", hours: "100 hrs", icon: Home, desc: "Spent 5 hours designing a house, put my Sim in a pool, and deleted the ladder.", img: "/sims.jpg" },
 ];
 
+// Pseudo-random transforms to break the grid and make it look scattered
+const SCATTER_TRANSFORMS = [
+  "rotate-3 translate-y-4",
+  "-rotate-2 -translate-y-6",
+  "rotate-6 translate-y-12 md:translate-y-16",
+  "-rotate-6 -translate-y-2 md:-translate-y-8",
+  "rotate-1 translate-y-8",
+  "-rotate-4 -translate-y-12",
+  "rotate-4 translate-y-2",
+  "-rotate-2 translate-y-16",
+  "rotate-5 -translate-y-8",
+  "-rotate-3 translate-y-6"
+];
+
 export function Mancave({ onBack }: MancaveProps) {
   return (
     <motion.div
@@ -61,16 +75,26 @@ export function Mancave({ onBack }: MancaveProps) {
           </div>
         </motion.div>
 
-        {/* Centered Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-4 justify-items-center max-w-6xl w-full">
-          {GAMES.map((game, i) => (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + i * 0.05 }}
-              key={game.id}
-              className="group relative w-full aspect-[3/4] p5-panel bg-card border-[3px] border-white overflow-hidden cursor-pointer shadow-[6px_6px_0_rgba(0,0,0,0.8)] hover:shadow-[10px_10px_0_rgba(255,0,51,1)] hover:-translate-y-2 hover:-rotate-2 transition-all duration-300 flex flex-col"
-            >
+        {/* Centered Gallery Grid with Connecting Lines */}
+        <div className="relative w-full max-w-6xl">
+          {/* Chaotic Connecting Lines Layer */}
+          <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+            <svg width="100%" height="100%" className="absolute inset-0">
+              <path d="M10% 20% L30% 15% L50% 35% L20% 50% L40% 70% L70% 60% L90% 40% L80% 20% L50% 35%" fill="none" stroke="#ff0033" strokeWidth="4" strokeDasharray="10 10" />
+              <path d="M15% 80% L35% 90% L60% 75% L85% 85% L70% 60%" fill="none" stroke="white" strokeWidth="2" strokeDasharray="5 5" />
+              <path d="M90% 40% L95% 65% L85% 85%" fill="none" stroke="#ff0033" strokeWidth="3" />
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-4 justify-items-center relative z-10">
+            {GAMES.map((game, i) => (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + i * 0.05 }}
+                key={game.id}
+                className={`group relative w-full aspect-[3/4] p5-panel bg-card border-[3px] border-white overflow-hidden cursor-pointer shadow-[6px_6px_0_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col hover:z-50 hover:scale-110 hover:!rotate-0 hover:!translate-y-0 hover:shadow-[12px_12px_0_rgba(255,0,51,1)] ${SCATTER_TRANSFORMS[i % SCATTER_TRANSFORMS.length]}`}
+              >
               {/* Normal State: Polaroid Style Plaque */}
               <div className="absolute inset-0 bg-black flex flex-col p-3 transition-opacity duration-300 opacity-100 group-hover:opacity-0">
                 <div className="w-full h-2/3 bg-card-border/20 border-2 border-white/20 flex items-center justify-center p5-panel relative overflow-hidden">
@@ -109,6 +133,7 @@ export function Mancave({ onBack }: MancaveProps) {
             </motion.div>
           ))}
         </div>
+      </div>
       </div>
     </motion.div>
   );

@@ -1,17 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  // Use Framer Motion values to completely bypass React state and eliminate lag
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth out the movement slightly without state overhead
+  const springX = useSpring(mouseX, { stiffness: 1000, damping: 50, mass: 0.1 });
+  const springY = useSpring(mouseY, { stiffness: 1000, damping: 50, mass: 0.1 });
+
   useEffect(() => {
     setIsMounted(true);
+    
+    // Direct DOM event listener updating the motion values
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -41,7 +51,7 @@ export function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver);
       document.documentElement.classList.remove("custom-cursor-active");
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   if (!isMounted || (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches)) {
     return null;
@@ -50,21 +60,28 @@ export function CustomCursor() {
   return (
     <motion.div
       className="fixed top-0 left-0 pointer-events-none"
-      style={{ zIndex: 999999 }}
-      animate={{
-        x: mousePosition.x - 4, // Offset slightly to align the tip of the SVG arrow
-        y: mousePosition.y - 4,
-        scale: isHovering ? 1.2 : 1,
-        rotate: isHovering ? -15 : 0,
+      style={{ 
+        zIndex: 999999,
+        x: springX,
+        y: springY
       }}
-      transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
     >
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
-        {/* Outer Black Border */}
-        <path d="M2 2L14 36L18 20L34 16L2 2Z" fill="black" />
-        {/* Inner Red Fill */}
-        <path d="M5 6L14 30L17 19L30 15L5 6Z" fill="#ff0033" />
-      </svg>
+      <motion.div
+        animate={{
+          scale: isHovering ? 1.2 : 1,
+          rotate: isHovering ? -15 : 0,
+          x: -4, // Offset slightly to align the tip of the SVG arrow
+          y: -4,
+        }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
+      >
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
+          {/* Outer Black Border */}
+          <path d="M2 2L14 36L18 20L34 16L2 2Z" fill="black" />
+          {/* Inner Red Fill */}
+          <path d="M5 6L14 30L17 19L30 15L5 6Z" fill="#ff0033" />
+        </svg>
+      </motion.div>
     </motion.div>
   );
 }
