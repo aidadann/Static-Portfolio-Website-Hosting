@@ -29,7 +29,7 @@ export function NavigationDock({
           {activeTab === "professional" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
+              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(209,168,79,0.5)] -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
@@ -47,7 +47,7 @@ export function NavigationDock({
           {activeTab === "personal" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
+              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(209,168,79,0.5)] -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}

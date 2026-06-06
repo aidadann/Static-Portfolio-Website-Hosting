@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #050505;
-  --color-foreground: #ffffff;
-  --color-accent: #ff0033;
-  --color-accent-hover: #cc0029;
-  --color-muted: #a3a3a3;
-  --color-card: rgba(20, 20, 20, 0.7);
-  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-background: #0f0d0c;
+  --color-foreground: #e6dfd3;
+  --color-accent: #d1a84f;
+  --color-accent-hover: #f3e5ab;
+  --color-muted: #8c8173;
+  --color-card: rgba(26, 22, 20, 0.85);
+  --color-card-border: rgba(209, 168, 79, 0.2);
+  
+  --font-cinzel: var(--font-cinzel), serif;
+  --font-garamond: var(--font-garamond), serif;
 }
 
 :root {
@@ -17,7 +20,7 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-garamond), serif;
   overflow-x: hidden;
 }
 

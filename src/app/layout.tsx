@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const garamond = EB_Garamond({
+  variable: "--font-garamond",
   subsets: ["latin"],
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${garamond.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <CustomCursor />
