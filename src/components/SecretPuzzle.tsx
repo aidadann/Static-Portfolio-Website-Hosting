@@ -45,40 +45,72 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
       setIsSolved(true);
       setTimeout(() => {
         onUnlock();
-      }, 1500); // Wait for the lock-shatter and key-slide animations
+      }, 1500);
     }
   }, [blocks, onUnlock]);
 
-  const handleBlockClick = (id: string) => {
-    if (isSolved) return;
-
-    setBlocks(prev => {
-      const block = prev.find(b => b.id === id)!;
-      const otherBlocks = prev.filter(b => b.id !== id);
-      
-      const isOccupied = (x: number, y: number) => {
-        return otherBlocks.some(b => {
-          if (b.type === 'H') return b.y === y && x >= b.x && x < b.x + b.len;
-          if (b.type === 'V') return b.x === x && y >= b.y && y < b.y + b.len;
-          return false;
-        });
-      };
-
-      if (block.type === 'H') {
-        const canLeft = block.x > 0 && !isOccupied(block.x - 1, block.y);
-        const canRight = block.x + block.len < 4 && !isOccupied(block.x + block.len, block.y);
-        
-        if (canLeft) return [...otherBlocks, { ...block, x: block.x - 1 }];
-        if (canRight) return [...otherBlocks, { ...block, x: block.x + 1 }];
-      } else {
-        const canUp = block.y > 0 && !isOccupied(block.x, block.y - 1);
-        const canDown = block.y + block.len < 4 && !isOccupied(block.x, block.y + block.len);
-        
-        if (canUp) return [...otherBlocks, { ...block, y: block.y - 1 }];
-        if (canDown) return [...otherBlocks, { ...block, y: block.y + 1 }];
-      }
-      return prev;
+  const isOccupied = (x: number, y: number, otherBlocks: Block[]) => {
+    return otherBlocks.some(b => {
+      if (b.type === 'H') return b.y === y && x >= b.x && x < b.x + b.len;
+      if (b.type === 'V') return b.x === x && y >= b.y && y < b.y + b.len;
+      return false;
     });
+  };
+
+  const getBounds = (block: Block) => {
+    const otherBlocks = blocks.filter(b => b.id !== block.id);
+    if (block.type === 'H') {
+      let minX = 0;
+      for (let x = block.x - 1; x >= 0; x--) {
+        if (isOccupied(x, block.y, otherBlocks)) {
+          minX = x + 1;
+          break;
+        }
+      }
+      let maxX = 4 - block.len;
+      for (let x = block.x + block.len; x < 4; x++) {
+        if (isOccupied(x, block.y, otherBlocks)) {
+          maxX = x - block.len;
+          break;
+        }
+      }
+      return { min: minX, max: maxX };
+    } else {
+      let minY = 0;
+      for (let y = block.y - 1; y >= 0; y--) {
+        if (isOccupied(block.x, y, otherBlocks)) {
+          minY = y + 1;
+          break;
+        }
+      }
+      let maxY = 4 - block.len;
+      for (let y = block.y + block.len; y < 4; y++) {
+        if (isOccupied(block.x, y, otherBlocks)) {
+          maxY = y - block.len;
+          break;
+        }
+      }
+      return { min: minY, max: maxY };
+    }
+  };
+
+  const handleDragEnd = (block: Block, offset: { x: number, y: number }) => {
+    if (isSolved) return;
+    const bounds = getBounds(block);
+    
+    const dragDistance = block.type === 'H' ? offset.x : offset.y;
+    const cellsMoved = Math.round(dragDistance / CELL_SIZE);
+    
+    if (cellsMoved !== 0) {
+      let newPos = (block.type === 'H' ? block.x : block.y) + cellsMoved;
+      newPos = Math.max(bounds.min, Math.min(bounds.max, newPos));
+      
+      setBlocks(prev => prev.map(b => 
+        b.id === block.id 
+          ? { ...b, [block.type === 'H' ? 'x' : 'y']: newPos }
+          : b
+      ));
+    }
   };
 
   return (
@@ -127,16 +159,25 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
                   const width = block.type === 'H' ? block.len * CELL_SIZE : CELL_SIZE;
                   const height = block.type === 'V' ? block.len * CELL_SIZE : CELL_SIZE;
                   
+                  const bounds = getBounds(block);
+                  const dragConstraints = block.type === 'H' 
+                    ? { left: (bounds.min - block.x) * CELL_SIZE, right: (bounds.max - block.x) * CELL_SIZE, top: 0, bottom: 0 }
+                    : { top: (bounds.min - block.y) * CELL_SIZE, bottom: (bounds.max - block.y) * CELL_SIZE, left: 0, right: 0 };
+                  
                   return (
                     <motion.div
                       key={block.id}
-                      onClick={() => handleBlockClick(block.id)}
+                      drag={!isSolved ? (block.type === 'H' ? 'x' : 'y') : false}
+                      dragConstraints={dragConstraints}
+                      dragElastic={0}
+                      dragMomentum={false}
+                      onDragEnd={(e, info) => handleDragEnd(block, info.offset)}
                       animate={{
                         x: block.x * CELL_SIZE + (isSolved && block.isKey ? CELL_SIZE * 1.5 : 0),
                         y: block.y * CELL_SIZE
                       }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className={`absolute cursor-pointer p-1 ${block.isKey ? 'z-30' : 'z-10'}`}
+                      className={`absolute p-1 cursor-grab active:cursor-grabbing ${block.isKey ? 'z-30' : 'z-10'}`}
                       style={{ width, height, top: 0, left: 0 }}
                     >
                       <div className={`w-full h-full border-2 p5-panel flex items-center justify-center shadow-[4px_4px_0_rgba(0,0,0,0.8)] transition-colors overflow-hidden relative ${
@@ -155,7 +196,7 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
               </div>
 
               {/* Exit Lock */}
-              <div className="absolute -right-16 top-[80px] w-16 h-20 flex items-center justify-center z-20">
+              <div className="absolute -right-16 top-[80px] w-16 h-20 flex items-center justify-center z-20 pointer-events-none">
                 <motion.div
                   animate={isSolved ? { scale: [1, 1.5, 0], opacity: [1, 1, 0], rotate: [0, 15, -15, 0] } : {}}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -165,7 +206,7 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
               </div>
             </div>
 
-            <p className="mt-12 text-white font-bold tracking-widest uppercase bg-black px-6 py-3 border-2 border-accent transform skew-x-6 shadow-[6px_6px_0_rgba(255,0,60,1)] text-center max-w-sm">
+            <p className="mt-12 text-white font-bold tracking-widest uppercase bg-black px-6 py-3 border-2 border-accent transform skew-x-6 shadow-[6px_6px_0_rgba(255,0,60,1)] text-center max-w-sm pointer-events-none">
               Slide the barricades.<br/>Clear the path for the golden key.
             </p>
           </motion.div>
