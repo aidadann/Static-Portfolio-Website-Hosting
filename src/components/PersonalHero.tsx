@@ -18,7 +18,7 @@ export function PersonalHero() {
           initial={{ opacity: 0, scale: 0.8, rotate: -30 }}
           animate={{ opacity: 1, scale: 1, rotate: 12 }}
           transition={{ type: "spring", bounce: 0.5, duration: 0.8 }}
-          className="w-20 h-20 bg-accent/10 border border-accent/20 rounded-3xl flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(255,0,51,0.2)]"
+          className="w-24 h-24 bg-accent border-[4px] border-white p5-panel flex items-center justify-center mb-8 shadow-[8px_8px_0_rgba(255,0,51,0.5)]"
         >
           <Smile className="w-10 h-10 text-accent" />
         </motion.div>
@@ -27,11 +27,11 @@ export function PersonalHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-tight"
+          className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-none uppercase italic -skew-x-6 drop-shadow-[6px_6px_0_rgba(255,0,51,1)]"
         >
           Welcome to the <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover">
-            fun side
+          <span className="text-white drop-shadow-[4px_4px_0_rgba(255,255,255,0.3)]">
+            Other Side
           </span> of the server.
         </motion.h1>
 

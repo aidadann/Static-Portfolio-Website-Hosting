@@ -58,8 +58,8 @@ export function Personal() {
 
       {/* Hobbies Bento Grid */}
       <div className="mb-32">
-        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Off Duty</h2>
-        <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
+        <h2 className="text-5xl font-black text-white mb-6 tracking-tighter uppercase italic -skew-x-6 drop-shadow-[4px_4px_0_rgba(255,0,51,1)]">Off Duty</h2>
+        <div className="h-2 w-32 bg-accent mb-12 p5-tag shadow-[4px_4px_0_rgba(255,255,255,1)]" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
           {/* Large card - Athletics */}
@@ -114,18 +114,18 @@ export function Personal() {
           {/* Wide card - Quote */}
           <motion.div
             whileHover={{ y: -5 }}
-            className="md:col-span-2 row-span-1 rounded-3xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 p-8 flex flex-col justify-center items-center text-center shadow-[0_0_30px_rgba(255,0,51,0.1)]"
+            className="md:col-span-2 row-span-1 p5-panel bg-card border-2 border-card-border p-8 flex flex-col justify-center items-center text-center shadow-[8px_8px_0_rgba(255,0,51,0.3)] hover:shadow-[12px_12px_0_rgba(255,0,51,1)] transition-all"
           >
-            <h3 className="text-2xl md:text-3xl font-medium text-white italic tracking-tight">"There is no cloud, it's just someone else's computer."</h3>
-            <p className="text-accent mt-4 font-semibold tracking-widest uppercase text-sm">— A tired engineer</p>
+            <h3 className="text-3xl md:text-5xl font-black text-white italic tracking-tighter uppercase -skew-x-6">"There is no cloud, it's just someone else's computer."</h3>
+            <p className="text-black bg-white mt-6 font-black tracking-widest uppercase text-sm p5-tag px-4 py-1">— A tired engineer</p>
           </motion.div>
         </div>
       </div>
 
       {/* Components of Life (Flashcards) */}
       <div className="mb-32">
-        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Components of Aidan</h2>
-        <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
+        <h2 className="text-5xl font-black text-white mb-6 tracking-tighter uppercase italic -skew-x-6 drop-shadow-[4px_4px_0_rgba(255,0,51,1)]">Components of Aidan</h2>
+        <div className="h-2 w-32 bg-accent mb-12 p5-tag shadow-[4px_4px_0_rgba(255,255,255,1)]" />
 
         {/* 3D Infinite Scroll Container */}
         <Carousel3D items={[
@@ -140,12 +140,12 @@ export function Personal() {
 
       {/* Misc Stats */}
       <div>
-        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Miscellaneous</h2>
-        <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
+        <h2 className="text-5xl font-black text-white mb-6 tracking-tighter uppercase italic -skew-x-6 drop-shadow-[4px_4px_0_rgba(255,0,51,1)]">Miscellaneous</h2>
+        <div className="h-2 w-32 bg-accent mb-12 p5-tag shadow-[4px_4px_0_rgba(255,255,255,1)]" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Music Player */}
-          <div className="md:col-span-5 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between relative overflow-hidden group shadow-lg">
+          <div className="md:col-span-5 rounded-3xl p5-panel bg-card border-[3px] border-card-border p-8 flex flex-col justify-between relative overflow-hidden group shadow-[8px_8px_0_rgba(255,0,51,0.3)]">
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-all duration-700" />
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-8">
@@ -214,9 +214,9 @@ export function Personal() {
           </div>
 
           {/* Daily Routine Timeline */}
-          <div className="md:col-span-7 rounded-3xl bg-card border border-card-border p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <Clock className="w-6 h-6 text-accent" /> Daily Routine
+          <div className="md:col-span-7 rounded-3xl p5-panel bg-card border-[3px] border-card-border p-8 shadow-[8px_8px_0_rgba(255,0,51,0.3)]">
+            <h3 className="text-3xl font-black text-white mb-8 flex items-center gap-3 uppercase italic -skew-x-6 drop-shadow-[2px_2px_0_rgba(255,0,51,1)]">
+              <Clock className="w-8 h-8 text-accent" /> Daily Routine
             </h3>
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent before:via-card-border before:to-transparent">

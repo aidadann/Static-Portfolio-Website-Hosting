@@ -9,8 +9,10 @@ import { Professional } from "@/components/Professional";
 import { Personal } from "@/components/Personal";
 import { SecretPuzzle } from "@/components/SecretPuzzle";
 import { Mancave } from "@/components/Mancave";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 export default function Home() {
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [activeTab, setActiveTab] = useState<"professional" | "personal">("professional");
   const [showPuzzle, setShowPuzzle] = useState(false);
   const [showMancave, setShowMancave] = useState(false);
@@ -22,12 +24,16 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-background">
-      <AnimatePresence mode="wait">
-        {showMancave ? (
-          <motion.div key="mancave" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Mancave onBack={() => setShowMancave(false)} />
-          </motion.div>
-        ) : (
+      {!hasLoaded && <LoadingScreen onLoadComplete={() => setHasLoaded(true)} />}
+      
+      {hasLoaded && (
+        <>
+          <AnimatePresence mode="wait">
+            {showMancave ? (
+              <motion.div key="mancave" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <Mancave onBack={() => setShowMancave(false)} />
+              </motion.div>
+            ) : (
           <motion.div key="main-content" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <AnimatePresence mode="wait">
               {activeTab === "professional" ? (
@@ -68,14 +74,16 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <SecretPuzzle 
-        isOpen={showPuzzle} 
-        onClose={() => setShowPuzzle(false)} 
-        onUnlock={() => {
-          setShowPuzzle(false);
-          setShowMancave(true);
-        }} 
-      />
+          <SecretPuzzle 
+            isOpen={showPuzzle} 
+            onClose={() => setShowPuzzle(false)} 
+            onUnlock={() => {
+              setShowPuzzle(false);
+              setShowMancave(true);
+            }} 
+          />
+        </>
+      )}
     </main>
   );
 }
