@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, X, Key } from "lucide-react";
+import { Lock, X } from "lucide-react";
 
 interface SecretPuzzleProps {
   isOpen: boolean;
@@ -10,106 +10,25 @@ interface SecretPuzzleProps {
   onUnlock: () => void;
 }
 
-type Block = {
-  id: string;
-  type: 'H' | 'V';
-  x: number;
-  y: number;
-  len: number;
-  isKey?: boolean;
-};
-
-const INITIAL_BLOCKS: Block[] = [
-  { id: 'K', type: 'H', x: 0, y: 1, len: 2, isKey: true },
-  { id: 'A', type: 'V', x: 2, y: 0, len: 2 },
-  { id: 'B', type: 'H', x: 2, y: 2, len: 2 },
-  { id: 'C', type: 'V', x: 3, y: 0, len: 2 },
-];
-
-const CELL_SIZE = 80;
-
 export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
-  const [blocks, setBlocks] = useState<Block[]>(INITIAL_BLOCKS);
-  const [isSolved, setIsSolved] = useState(false);
+  const [code, setCode] = useState("");
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      setBlocks(INITIAL_BLOCKS);
-      setIsSolved(false);
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    const keyBlock = blocks.find(b => b.isKey);
-    if (keyBlock && keyBlock.x === 2 && keyBlock.y === 1) {
-      setIsSolved(true);
-      setTimeout(() => {
-        onUnlock();
-      }, 1500);
-    }
-  }, [blocks, onUnlock]);
-
-  const isOccupied = (x: number, y: number, otherBlocks: Block[]) => {
-    return otherBlocks.some(b => {
-      if (b.type === 'H') return b.y === y && x >= b.x && x < b.x + b.len;
-      if (b.type === 'V') return b.x === x && y >= b.y && y < b.y + b.len;
-      return false;
-    });
-  };
-
-  const getBounds = (block: Block) => {
-    const otherBlocks = blocks.filter(b => b.id !== block.id);
-    if (block.type === 'H') {
-      let minX = 0;
-      for (let x = block.x - 1; x >= 0; x--) {
-        if (isOccupied(x, block.y, otherBlocks)) {
-          minX = x + 1;
-          break;
+  const handleInput = (num: string) => {
+    if (code.length < 3) {
+      const newCode = code + num;
+      setCode(newCode);
+      if (newCode.length === 3) {
+        if (newCode === "404") {
+          setTimeout(() => onUnlock(), 500);
+        } else {
+          setError(true);
+          setTimeout(() => {
+            setCode("");
+            setError(false);
+          }, 800);
         }
       }
-      let maxX = 4 - block.len;
-      for (let x = block.x + block.len; x < 4; x++) {
-        if (isOccupied(x, block.y, otherBlocks)) {
-          maxX = x - block.len;
-          break;
-        }
-      }
-      return { min: minX, max: maxX };
-    } else {
-      let minY = 0;
-      for (let y = block.y - 1; y >= 0; y--) {
-        if (isOccupied(block.x, y, otherBlocks)) {
-          minY = y + 1;
-          break;
-        }
-      }
-      let maxY = 4 - block.len;
-      for (let y = block.y + block.len; y < 4; y++) {
-        if (isOccupied(block.x, y, otherBlocks)) {
-          maxY = y - block.len;
-          break;
-        }
-      }
-      return { min: minY, max: maxY };
-    }
-  };
-
-  const handleDragEnd = (block: Block, offset: { x: number, y: number }) => {
-    if (isSolved) return;
-    const bounds = getBounds(block);
-    
-    const dragDistance = block.type === 'H' ? offset.x : offset.y;
-    const cellsMoved = Math.round(dragDistance / CELL_SIZE);
-    
-    if (cellsMoved !== 0) {
-      let newPos = (block.type === 'H' ? block.x : block.y) + cellsMoved;
-      newPos = Math.max(bounds.min, Math.min(bounds.max, newPos));
-      
-      setBlocks(prev => prev.map(b => 
-        b.id === block.id 
-          ? { ...b, [block.type === 'H' ? 'x' : 'y']: newPos }
-          : b
-      ));
     }
   };
 
@@ -120,11 +39,11 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md noise-overlay"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md"
         >
           <div className="absolute top-8 right-8 z-50">
-            <button onClick={onClose} className="p-3 bg-black border-2 border-white hover:bg-accent transition-colors p5-button shadow-[4px_4px_0_rgba(255,255,255,1)]">
-              <X className="w-6 h-6 text-white" />
+            <button onClick={onClose} className="p-2 text-muted hover:text-white transition-colors p5-button bg-card border border-card-border hover:border-accent">
+              <X className="w-6 h-6" />
             </button>
           </div>
 
@@ -132,83 +51,46 @@ export function SecretPuzzle({ isOpen, onClose, onUnlock }: SecretPuzzleProps) {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 1.1, opacity: 0 }}
-            className="flex flex-col items-center"
+            className="p5-panel bg-card border-2 border-accent p-12 max-w-sm w-full flex flex-col items-center relative shadow-[0_0_50px_rgba(255,0,51,0.3)]"
           >
-            <div className="p5-panel bg-black border-[4px] border-white px-8 py-2 transform -skew-x-12 mb-8 shadow-[8px_8px_0_rgba(255,0,60,1)]">
-              <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-[0.2em]">
-                {isSolved ? "PALACE INFILTRATED" : "UNLOCK THE GATES"}
-              </h2>
-            </div>
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,rgba(255,0,51,0.5)_1px,transparent_1px)] bg-[size:10px_10px]" />
             
-            <div className="relative flex items-center">
-              {/* Main Grid Container */}
-              <div 
-                className="relative bg-[#111] border-[4px] border-accent p5-panel shadow-[0_0_50px_rgba(255,0,60,0.4)]"
-                style={{ width: CELL_SIZE * 4, height: CELL_SIZE * 4 }}
-              >
-                {/* Grid Lines Overlay */}
-                <div 
-                  className="absolute inset-0 pointer-events-none opacity-20"
-                  style={{
-                    backgroundImage: 'linear-gradient(to right, #ff003c 1px, transparent 1px), linear-gradient(to bottom, #ff003c 1px, transparent 1px)',
-                    backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px`
-                  }}
-                />
+            <motion.div 
+              animate={error ? { x: [-10, 10, -10, 10, 0] } : {}}
+              className="relative z-10 flex flex-col items-center"
+            >
+              <Lock className={`w-12 h-12 mb-6 ${error ? 'text-red-500 drop-shadow-[0_0_10px_rgba(255,0,0,0.8)]' : 'text-accent drop-shadow-[0_0_10px_rgba(255,0,51,0.8)]'}`} />
+              <h2 className="text-2xl font-black text-white mb-2 tracking-widest uppercase">Restricted Area</h2>
+              <p className="text-muted text-sm mb-8 text-center font-bold">Hint: HTTP Status Code for "Not Found"</p>
 
-                {blocks.map(block => {
-                  const width = block.type === 'H' ? block.len * CELL_SIZE : CELL_SIZE;
-                  const height = block.type === 'V' ? block.len * CELL_SIZE : CELL_SIZE;
-                  
-                  const bounds = getBounds(block);
-                  const dragConstraints = block.type === 'H' 
-                    ? { left: (bounds.min - block.x) * CELL_SIZE, right: (bounds.max - block.x) * CELL_SIZE, top: 0, bottom: 0 }
-                    : { top: (bounds.min - block.y) * CELL_SIZE, bottom: (bounds.max - block.y) * CELL_SIZE, left: 0, right: 0 };
-                  
-                  return (
-                    <motion.div
-                      key={block.id}
-                      drag={!isSolved ? (block.type === 'H' ? 'x' : 'y') : false}
-                      dragConstraints={dragConstraints}
-                      dragElastic={0}
-                      dragMomentum={false}
-                      onDragEnd={(e, info) => handleDragEnd(block, info.offset)}
-                      animate={{
-                        x: block.x * CELL_SIZE + (isSolved && block.isKey ? CELL_SIZE * 1.5 : 0),
-                        y: block.y * CELL_SIZE
-                      }}
-                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      className={`absolute p-1 cursor-grab active:cursor-grabbing ${block.isKey ? 'z-30' : 'z-10'}`}
-                      style={{ width, height, top: 0, left: 0 }}
-                    >
-                      <div className={`w-full h-full border-2 p5-panel flex items-center justify-center shadow-[4px_4px_0_rgba(0,0,0,0.8)] transition-colors overflow-hidden relative ${
-                        block.isKey 
-                          ? 'bg-[#D4AF37] border-white text-black' 
-                          : 'bg-black border-white hover:border-accent'
-                      }`}>
-                        {!block.isKey && (
-                          <div className="absolute inset-0 opacity-40 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 10px, #ff003c 10px, #ff003c 20px)' }} />
-                        )}
-                        {block.isKey && <Key className="w-8 h-8 transform -rotate-12 relative z-10" />}
-                      </div>
-                    </motion.div>
-                  );
-                })}
+              <div className="flex gap-4 mb-8">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className={`w-14 h-16 flex items-center justify-center text-3xl font-black rounded border-2 ${error ? 'border-red-500 text-red-500 bg-red-500/10' : 'border-card-border text-white bg-black'} p5-tag shadow-inner`}>
+                    {code[i] || "_"}
+                  </div>
+                ))}
               </div>
 
-              {/* Exit Lock */}
-              <div className="absolute -right-16 top-[80px] w-16 h-20 flex items-center justify-center z-20 pointer-events-none">
-                <motion.div
-                  animate={isSolved ? { scale: [1, 1.5, 0], opacity: [1, 1, 0], rotate: [0, 15, -15, 0] } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  <Lock className={`w-12 h-12 ${isSolved ? 'text-[#D4AF37]' : 'text-accent drop-shadow-[0_0_15px_rgba(255,0,60,0.8)]'}`} />
-                </motion.div>
+              <div className="grid grid-cols-3 gap-3 w-full">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, "C", 0, "OK"].map((btn) => (
+                  <button
+                    key={btn}
+                    onClick={() => {
+                      if (btn === "C") {
+                        setCode("");
+                        setError(false);
+                      } else if (btn !== "OK") {
+                        handleInput(btn.toString());
+                      }
+                    }}
+                    className={`h-12 p5-button font-black text-lg transition-colors ${btn === "C" ? 'bg-card-border text-muted hover:bg-white hover:text-black' : btn === "OK" ? 'bg-accent/50 text-white cursor-not-allowed' : 'bg-black text-white border border-card-border hover:border-accent hover:text-accent hover:bg-accent/10'}`}
+                  >
+                    {btn}
+                  </button>
+                ))}
               </div>
-            </div>
-
-            <p className="mt-12 text-white font-bold tracking-widest uppercase bg-black px-6 py-3 border-2 border-accent transform skew-x-6 shadow-[6px_6px_0_rgba(255,0,60,1)] text-center max-w-sm pointer-events-none">
-              Slide the barricades.<br/>Clear the path for the golden key.
-            </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
