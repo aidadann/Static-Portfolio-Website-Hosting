@@ -5,45 +5,55 @@ import { Smile } from "lucide-react";
 
 export function PersonalHero() {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center px-4 overflow-hidden pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[20%] w-[40%] h-[40%] bg-accent/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[20%] right-[20%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-      </div>
+    <div className="relative min-h-[70vh] flex items-center justify-center pt-24 pb-12 overflow-hidden noise-overlay">
+      {/* Phantom Thief Yellow/Red Spotlight Background */}
+      <div className="absolute inset-0 bg-black" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(255,255,0,0.2)_0%,transparent_70%)] animate-pulse pointer-events-none" />
+      
+      {/* Halftone Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,0,0.15)_3px,transparent_3px)] bg-[size:12px_12px] opacity-30 pointer-events-none" />
 
-      <div className="z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 w-full flex flex-col items-center text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -30 }}
           animate={{ opacity: 1, scale: 1, rotate: 12 }}
           transition={{ type: "spring", bounce: 0.5, duration: 0.8 }}
-          className="w-24 h-24 bg-accent border-[4px] border-white p5-panel flex items-center justify-center mb-8 shadow-[8px_8px_0_rgba(255,0,51,0.5)]"
+          className="w-32 h-32 bg-[var(--color-secondary)] border-4 border-black p5-panel flex items-center justify-center mb-12 shadow-[12px_12px_0_rgba(255,0,60,1)]"
         >
-          <Smile className="w-10 h-10 text-accent" />
+          <Smile className="w-16 h-16 text-black" />
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-none uppercase italic -skew-x-6 drop-shadow-[6px_6px_0_rgba(255,0,51,1)]"
+          className="relative flex flex-col items-center"
         >
-          Welcome to the <br />
-          <span className="text-white drop-shadow-[4px_4px_0_rgba(255,255,255,0.3)]">
-            Other Side
-          </span> of the server.
-        </motion.h1>
+          <div className="p5-panel bg-black border-4 border-white px-8 py-2 transform -skew-x-12 mb-6 shadow-[8px_8px_0_rgba(255,255,0,1)]">
+            <h2 className="text-xl md:text-3xl font-black text-[var(--color-secondary)] uppercase tracking-[0.3em]">
+              The Confidant
+            </h2>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          No Terraform state files or routing protocols here. Just a collection of things I do when I'm not staring at a terminal. Grab a coffee and stay a while!
-        </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-7xl md:text-9xl font-black tracking-tighter text-white mb-6 leading-none uppercase italic transform -skew-x-12 drop-shadow-[8px_8px_0_rgba(255,0,60,1)]"
+          >
+            <span className="p5-glitch-hover inline-block">OTHER SIDE</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-white bg-black p-4 border-l-4 border-accent max-w-2xl leading-relaxed font-bold tracking-widest uppercase transform skew-x-6 shadow-[4px_4px_0_rgba(255,0,60,1)]"
+          >
+            "Take your time." The phantom thief's journey outside the metaverse.
+          </motion.p>
+        </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

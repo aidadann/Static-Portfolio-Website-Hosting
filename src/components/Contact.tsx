@@ -1,106 +1,79 @@
 "use client";
 
-import { Mail, Phone, Send } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Send } from "lucide-react";
 
 export function Contact() {
   return (
-    <div className="mb-24">
-      <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Contact Me</h2>
-      <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-card border border-card-border rounded-3xl p-8 lg:p-12 shadow-lg">
-
-        {/* Left Side: Socials */}
-        <div className="flex flex-col justify-between">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Let's Connect</h3>
-            <p className="text-muted leading-relaxed mb-8 max-w-sm">
-              I'm always looking to connect with others in cloud infrastructure and software engineering. Whether you have a question, an opportunity, or just want to say hi, I'll try my best to get back to you!
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            <a href="tel:+60149948979" className="flex items-center gap-4 text-gray-300 hover:text-accent transition-colors group">
-              <div className="w-12 h-12 rounded-full bg-black/50 border border-card-border flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all">
-                <Phone className="w-5 h-5" />
-              </div>
-              <span className="font-medium">+60 14-994 8979</span>
-            </a>
-
-            <a href="mailto:aidandanielwe@gmail.com" className="flex items-center gap-4 text-gray-300 hover:text-accent transition-colors group">
-              <div className="w-12 h-12 rounded-full bg-black/50 border border-card-border flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all">
-                <Mail className="w-5 h-5" />
-              </div>
-              <span className="font-medium">aidandanielwe@gmail.com</span>
-            </a>
-
-            <a href="https://www.linkedin.com/in/aidan-andrew-daniel-b77764255/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-accent transition-colors group">
-              <div className="w-12 h-12 rounded-full bg-black/50 border border-card-border flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </div>
-              <span className="font-medium">Aidan Andrew Daniel</span>
-            </a>
-          </div>
+    <div className="max-w-4xl mx-auto px-4 noise-overlay">
+      <div className="p5-panel bg-[#dfdfdf] border-[8px] border-black p-8 md:p-12 shadow-[16px_16px_0_rgba(255,0,60,1)] transform -rotate-1">
+        
+        {/* Ransom Note Title */}
+        <div className="flex flex-wrap gap-2 mb-12 justify-center">
+          {["S", "E", "N", "D", " ", "U", "S", " ", "A", " ", "C", "A", "L", "L", "I", "N", "G", " ", "C", "A", "R", "D"].map((char, i) => {
+            if (char === " ") return <div key={i} className="w-4" />;
+            const isRed = i % 3 === 0;
+            const isYellow = i % 5 === 0;
+            const bgClass = isRed ? "bg-accent text-white" : isYellow ? "bg-secondary text-black" : "bg-black text-white";
+            const fontClass = i % 2 === 0 ? "font-serif" : "font-sans";
+            const rotation = i % 2 === 0 ? "rotate-3" : "-rotate-3";
+            return (
+              <motion.span
+                key={i}
+                whileHover={{ scale: 1.2, rotate: 0 }}
+                className={`text-3xl md:text-5xl font-black uppercase flex items-center justify-center w-10 h-12 md:w-14 md:h-16 border-2 border-black transform ${rotation} ${bgClass} ${fontClass} shadow-[4px_4px_0_rgba(0,0,0,0.5)]`}
+              >
+                {char}
+              </motion.span>
+            );
+          })}
         </div>
 
-        {/* Right Side: Form */}
-        <div className="bg-black/20 p-8 rounded-2xl border border-white/5 relative">
-          <form action="https://api.web3forms.com/submit" method="POST" className="flex flex-col gap-6">
+        <form className="space-y-8 max-w-2xl mx-auto relative z-20">
+          <div className="flex flex-col">
+            <label className="text-black font-black uppercase text-xl mb-2 flex gap-2">
+              <span className="bg-white px-2 border-2 border-black transform -rotate-2">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="YOUR CODENAME"
+              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-1 shadow-[6px_6px_0_rgba(0,0,0,1)]"
+            />
+          </div>
 
-            {/* NOTE TO USER: Replace this string with your Web3Forms Access Key */}
-            <input type="hidden" name="access_key" value="a41ddb97-34c0-4d37-8b52-bda18509df04" />
+          <div className="flex flex-col">
+            <label className="text-black font-black uppercase text-xl mb-2 flex gap-2">
+              <span className="bg-black text-white px-2 border-2 border-black transform rotate-2">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="HIDEOUT@METAVERSE.COM"
+              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform -rotate-1 shadow-[6px_6px_0_rgba(0,0,0,1)]"
+            />
+          </div>
 
-            {/* Optional: Add a redirect URL for after submission */}
-            {/* <input type="hidden" name="redirect" value="https://yourwebsite.com/thanks" /> */}
+          <div className="flex flex-col">
+            <label className="text-black font-black uppercase text-xl mb-2 flex gap-2">
+              <span className="bg-accent text-white px-2 border-2 border-black transform -rotate-1">Message</span>
+            </label>
+            <textarea
+              rows={4}
+              placeholder="WE ARE COMING FOR YOU..."
+              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-2 shadow-[6px_6px_0_rgba(0,0,0,1)] resize-none"
+            />
+          </div>
 
-            <div className="flex flex-col gap-2">
-              <label htmlFor="name" className="text-sm font-semibold text-white/80 uppercase tracking-wider">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="your secret identity"
-                className="bg-black/50 border border-card-border rounded-xl px-4 py-3 text-white placeholder:text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="text-sm font-semibold text-white/80 uppercase tracking-wider">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="i wont spam u"
-                className="bg-black/50 border border-card-border rounded-xl px-4 py-3 text-white placeholder:text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label htmlFor="message" className="text-sm font-semibold text-white/80 uppercase tracking-wider">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={4}
-                placeholder="write ur message here"
-                className="bg-black/50 border border-card-border rounded-xl px-4 py-3 text-white placeholder:text-muted/50 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none"
-              />
-            </div>
-
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
-
-            <button
-              type="submit"
-              className="mt-2 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-accent text-white font-bold hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(255,0,51,0.4)] transition-all"
-            >
-              Send Message
-              <Send className="w-4 h-4 ml-1" />
-            </button>
-          </form>
-        </div>
-
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            className="w-full p5-button bg-accent text-white font-black text-3xl md:text-4xl uppercase tracking-[0.2em] py-6 border-4 border-black shadow-[10px_10px_0_rgba(0,0,0,1)] flex items-center justify-center gap-4 group transition-colors hover:bg-black"
+          >
+            <Mail className="w-8 h-8 transform -rotate-12 group-hover:rotate-0 transition-transform" />
+            <span className="transform -skew-x-12">DISPATCH</span>
+            <Send className="w-8 h-8 transform rotate-12 group-hover:translate-x-4 transition-transform" />
+          </motion.button>
+        </form>
       </div>
     </div>
   );

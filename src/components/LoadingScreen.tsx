@@ -57,7 +57,7 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
             clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)", 
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
           }}
-          className="fixed inset-0 z-[9999] bg-accent flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-accent flex flex-col items-center justify-center overflow-hidden noise-overlay"
           style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
         >
           {/* Halftone background */}

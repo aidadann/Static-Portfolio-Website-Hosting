@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Briefcase, Globe, Gamepad2 } from "lucide-react";
+import { User, Briefcase, Gamepad2 } from "lucide-react";
 import clsx from "clsx";
 
 export function NavigationDock({
@@ -14,56 +14,56 @@ export function NavigationDock({
   onSecretClick: () => void;
 }) {
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-8 left-12 z-50 transform -skew-x-12">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex items-center gap-2 p-2 rounded-full bg-card backdrop-blur-md border border-card-border shadow-2xl"
+        className="flex items-center gap-4 p-2 bg-black border-4 border-white shadow-[8px_8px_0_rgba(255,0,60,1)]"
       >
         <button
           onClick={() => setActiveTab("professional")}
           className={clsx(
-            "relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors",
+            "relative flex items-center gap-2 px-6 py-3 text-lg font-black uppercase tracking-widest transition-colors",
             activeTab === "professional" ? "text-white" : "text-muted hover:text-white"
           )}
         >
           {activeTab === "professional" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
+              className="absolute inset-0 bg-accent -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
-          <Briefcase className="w-4 h-4 z-10" />
-          <span className="hidden sm:inline z-10">Professional</span>
+          <Briefcase className="w-5 h-5 z-10" />
+          <span className="z-10">Mission</span>
         </button>
 
         <button
           onClick={() => setActiveTab("personal")}
           className={clsx(
-            "relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors",
+            "relative flex items-center gap-2 px-6 py-3 text-lg font-black uppercase tracking-widest transition-colors",
             activeTab === "personal" ? "text-white" : "text-muted hover:text-white"
           )}
         >
           {activeTab === "personal" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
+              className="absolute inset-0 bg-accent -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
-          <User className="w-4 h-4 z-10" />
-          <span className="hidden sm:inline z-10">Personal</span>
+          <User className="w-5 h-5 z-10" />
+          <span className="z-10">Confidant</span>
         </button>
         
-        <div className="w-px h-6 bg-card-border mx-2" />
+        <div className="w-1 h-8 bg-white mx-2" />
         
         <button 
           onClick={onSecretClick}
-          className="flex items-center justify-center w-10 h-10 rounded-full text-muted hover:text-white hover:bg-card-border transition-colors group"
+          className="flex items-center justify-center w-12 h-12 bg-black hover:bg-accent transition-colors group border-2 border-transparent hover:border-white"
         >
-          <Gamepad2 className="w-4 h-4 group-hover:text-accent transition-colors" />
+          <Gamepad2 className="w-6 h-6 text-white transition-colors" />
         </button>
       </motion.div>
     </div>
