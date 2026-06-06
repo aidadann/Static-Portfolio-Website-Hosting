@@ -48,29 +48,23 @@ export function CustomCursor() {
   }
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-accent rounded-full pointer-events-none z-[10000] shadow-[0_0_10px_rgba(255,0,51,0.8)]"
-        animate={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
-          scale: isHovering ? 0.5 : 1,
-          opacity: isHovering ? 0 : 1,
-        }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
-      />
-      
-      <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border-[1.5px] border-accent/80 rounded-full pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "rgba(255, 0, 51, 0.15)" : "rgba(255, 0, 51, 0)",
-          borderColor: isHovering ? "rgba(255, 0, 51, 0.4)" : "rgba(255, 0, 51, 0.8)",
-        }}
-        transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.5 }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 pointer-events-none"
+      style={{ zIndex: 999999 }}
+      animate={{
+        x: mousePosition.x - 4, // Offset slightly to align the tip of the SVG arrow
+        y: mousePosition.y - 4,
+        scale: isHovering ? 1.2 : 1,
+        rotate: isHovering ? -15 : 0,
+      }}
+      transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
+    >
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
+        {/* Outer Black Border */}
+        <path d="M2 2L14 36L18 20L34 16L2 2Z" fill="black" />
+        {/* Inner Red Fill */}
+        <path d="M5 6L14 30L17 19L30 15L5 6Z" fill="#ff0033" />
+      </svg>
+    </motion.div>
   );
 }

@@ -29,66 +29,80 @@ export function Mancave({ onBack }: MancaveProps) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.5, ease: "circOut" }}
-      className="min-h-screen bg-background text-white relative z-50 pt-12 pb-32 px-4 md:px-8 overflow-y-auto"
+      className="min-h-screen bg-background text-white relative z-50 pt-8 pb-32 px-4 md:px-8 overflow-y-auto"
     >
       {/* Persona 5 Halftone Background Pattern */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,0,51,0.08)_2px,transparent_2px)] bg-[size:15px_15px] pointer-events-none z-0" />
       <div className="fixed top-0 left-0 right-0 h-96 bg-gradient-to-b from-accent/20 to-transparent pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <button
-          onClick={onBack}
-          className="p5-button mb-12 flex items-center gap-2 px-6 py-3 bg-white text-black font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-colors shadow-[6px_6px_0_rgba(255,0,51,1)]"
-        >
-          <ArrowLeft className="w-5 h-5" /> Return to Reality
-        </button>
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
+        <div className="w-full flex justify-start mb-8">
+          <button
+            onClick={onBack}
+            className="p5-button flex items-center gap-2 px-6 py-3 bg-white text-black font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-colors shadow-[6px_6px_0_rgba(255,0,51,1)]"
+          >
+            <ArrowLeft className="w-5 h-5" /> Back
+          </button>
+        </div>
 
         <motion.div 
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="mb-16 -skew-x-6"
+          className="mb-16 text-center flex flex-col items-center"
         >
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase drop-shadow-[6px_6px_0_rgba(255,0,51,1)]">
-            Thieves Den <span className="text-accent drop-shadow-[4px_4px_0_rgba(255,255,255,1)]">Awards</span>
-          </h1>
-          <div className="h-3 w-48 bg-white mt-4 p5-tag shadow-[4px_4px_0_rgba(255,0,51,1)]" />
+          <div className="p5-panel bg-black border-[3px] border-white px-12 py-4 shadow-[8px_8px_0_rgba(255,0,51,1)] transform -rotate-2">
+            <h1 className="text-5xl md:text-7xl font-black tracking-widest text-white uppercase drop-shadow-[2px_2px_0_rgba(255,0,51,1)]">
+              THIEVES DEN
+            </h1>
+          </div>
+          <div className="p5-tag bg-white text-black px-6 py-1 mt-4 text-xl font-black tracking-[0.2em] transform rotate-1 shadow-[4px_4px_0_rgba(255,0,51,1)]">
+            AWARDS GALLERY
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+        {/* Centered Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-4 justify-items-center max-w-6xl w-full">
           {GAMES.map((game, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.05 }}
               key={game.id}
-              className="group relative h-72 w-full p5-panel bg-card border-[3px] border-card-border overflow-hidden cursor-pointer shadow-[8px_8px_0_rgba(255,0,51,0.5)] hover:shadow-[12px_12px_0_rgba(255,0,51,1)] hover:-translate-y-2 transition-all duration-300"
+              className="group relative w-full aspect-[3/4] p5-panel bg-card border-[3px] border-white overflow-hidden cursor-pointer shadow-[6px_6px_0_rgba(0,0,0,0.8)] hover:shadow-[10px_10px_0_rgba(255,0,51,1)] hover:-translate-y-2 hover:-rotate-2 transition-all duration-300 flex flex-col"
             >
-              {/* Normal State: Monochromatic Award Plaque */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black transition-opacity duration-300 opacity-100 group-hover:opacity-0">
-                <game.icon className="w-24 h-24 text-card-border mb-4 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
-                <h3 className="text-2xl font-black uppercase text-card-border tracking-widest">{game.title}</h3>
+              {/* Normal State: Polaroid Style Plaque */}
+              <div className="absolute inset-0 bg-black flex flex-col p-3 transition-opacity duration-300 opacity-100 group-hover:opacity-0">
+                <div className="w-full h-2/3 bg-card-border/20 border-2 border-white/20 flex items-center justify-center p5-panel relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_2px,transparent_2px)] bg-[size:10px_10px]" />
+                  <game.icon className="w-16 h-16 text-white/50 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
+                </div>
+                <div className="flex-1 flex items-center justify-center text-center p-2">
+                  <h3 className="text-lg font-black uppercase text-white tracking-widest leading-tight">{game.title}</h3>
+                </div>
               </div>
 
-              {/* Hover State: Game Background & Info */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                {/* Background Image (User uploads these to public/) */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-accent to-black">
-                  <Image src={game.img} alt={game.title} fill className="object-cover mix-blend-overlay opacity-60" onError={(e) => e.currentTarget.style.display = 'none'} />
+              {/* Hover State: Game Background & Pop-up Info */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 bg-black">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image src={game.img} alt={game.title} fill className="object-cover opacity-50 mix-blend-luminosity" onError={(e) => e.currentTarget.style.display = 'none'} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-accent/90 via-accent/40 to-transparent" />
                 </div>
                 
-                {/* Pop-up Info */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-between z-20">
-                  <div className="bg-black p5-panel p-3 border-2 border-white inline-block w-fit -skew-x-6 transform shadow-[4px_4px_0_rgba(255,0,51,1)]">
-                    <h3 className="text-xl font-black uppercase text-white">{game.title}</h3>
+                {/* Overlay Text Content */}
+                <div className="absolute inset-0 p-3 flex flex-col justify-between z-20">
+                  <div className="bg-white p5-tag px-2 py-1 border-2 border-black self-start transform -rotate-3 shadow-[2px_2px_0_rgba(0,0,0,1)]">
+                    <p className="font-black text-xs text-black uppercase tracking-wider">{game.hours}</p>
                   </div>
 
-                  <div className="bg-white p5-panel p-3 border-2 border-accent text-black self-end -skew-x-6 shadow-[-4px_4px_0_rgba(255,0,51,1)]">
-                    <p className="font-black text-lg uppercase">{game.hours}</p>
-                  </div>
-
-                  <div className="bg-accent/90 backdrop-blur-sm p-4 border-l-4 border-white">
-                    <p className="text-white font-bold leading-tight italic">"{game.desc}"</p>
+                  <div className="flex flex-col gap-2">
+                    <div className="bg-black p5-panel p-2 border-2 border-white transform rotate-2 shadow-[4px_4px_0_rgba(255,0,51,1)]">
+                      <h3 className="text-sm font-black uppercase text-white leading-tight">{game.title}</h3>
+                    </div>
+                    <div className="bg-white text-black p5-panel p-2 border-2 border-black transform -rotate-1 shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                      <p className="font-bold text-[10px] uppercase leading-tight italic">"{game.desc}"</p>
+                    </div>
                   </div>
                 </div>
               </div>
