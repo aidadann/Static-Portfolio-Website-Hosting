@@ -58,7 +58,7 @@ export function Personal() {
 
       {/* Hobbies Bento Grid */}
       <div className="mb-32">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Off Duty</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Off Duty</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
@@ -74,7 +74,7 @@ export function Personal() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
-              <h3 className="font-cinzel text-3xl font-bold text-white mb-2">Athletics</h3>
+              <h3 className="text-3xl font-bold text-white mb-2">Athletics</h3>
               <p className="text-gray-300 max-w-sm leading-relaxed">Bronze medalist for 400m hurdles at SUKIPT 2024 and proud Sabah athlete for SUKMA 2024.</p>
             </div>
           </motion.div>
@@ -90,7 +90,7 @@ export function Personal() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
-              <h3 className="font-cinzel text-2xl font-bold text-white mb-2">Traveling</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Traveling</h3>
               <p className="text-gray-300 text-sm">Capturing moments while exploring the world.</p>
             </div>
           </motion.div>
@@ -106,7 +106,7 @@ export function Personal() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none" />
 
             <div className="relative z-10 p-8 h-full flex flex-col justify-start">
-              <h3 className="font-cinzel text-2xl font-bold text-white mb-2">Gaming</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Gaming</h3>
               <p className="text-gray-300 text-sm">Relaxing in digital worlds when the IDE is closed.</p>
             </div>
           </motion.div>
@@ -114,7 +114,7 @@ export function Personal() {
           {/* Wide card - Quote */}
           <motion.div
             whileHover={{ y: -5 }}
-            className="md:col-span-2 row-span-1 rounded-3xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 p-8 flex flex-col justify-center items-center text-center shadow-[0_0_30px_rgba(209,168,79,0.1)]"
+            className="md:col-span-2 row-span-1 rounded-3xl bg-gradient-to-br from-accent/20 to-transparent border border-accent/30 p-8 flex flex-col justify-center items-center text-center shadow-[0_0_30px_rgba(255,0,51,0.1)]"
           >
             <h3 className="text-2xl md:text-3xl font-medium text-white italic tracking-tight">"There is no cloud, it's just someone else's computer."</h3>
             <p className="text-accent mt-4 font-semibold tracking-widest uppercase text-sm">— A tired engineer</p>
@@ -124,7 +124,7 @@ export function Personal() {
 
       {/* Components of Life (Flashcards) */}
       <div className="mb-32">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Components of Aidan</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Components of Aidan</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         {/* 3D Infinite Scroll Container */}
@@ -140,7 +140,7 @@ export function Personal() {
 
       {/* Misc Stats */}
       <div>
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Miscellaneous</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Miscellaneous</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -151,7 +151,7 @@ export function Personal() {
               <div className="flex items-center justify-between mb-8">
                 {/* Animated Vinyl Record */}
                 <motion.div 
-                  className="w-16 h-16 rounded-full border-[3px] border-[#111] bg-black flex items-center justify-center relative overflow-hidden shadow-[0_0_15px_rgba(209,168,79,0.2)]"
+                  className="w-16 h-16 rounded-full border-[3px] border-[#111] bg-black flex items-center justify-center relative overflow-hidden shadow-[0_0_15px_rgba(255,0,51,0.2)]"
                   animate={{ rotate: isPlaying ? 360 : 0 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 >
@@ -201,7 +201,7 @@ export function Personal() {
               <SkipBack onClick={prevSong} className="w-5 h-5 text-muted hover:text-white cursor-pointer transition-colors" />
               <div
                 onClick={togglePlay}
-                className="w-14 h-14 bg-accent rounded-full flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(209,168,79,0.4)] hover:scale-105 transition-transform"
+                className="w-14 h-14 bg-accent rounded-full flex items-center justify-center cursor-pointer shadow-[0_0_20px_rgba(255,0,51,0.4)] hover:scale-105 transition-transform"
               >
                 {isPlaying ? (
                   <Pause className="w-6 h-6 text-white" />
@@ -215,7 +215,7 @@ export function Personal() {
 
           {/* Daily Routine Timeline */}
           <div className="md:col-span-7 rounded-3xl bg-card border border-card-border p-8 shadow-lg">
-            <h3 className="font-cinzel text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
               <Clock className="w-6 h-6 text-accent" /> Daily Routine
             </h3>
 

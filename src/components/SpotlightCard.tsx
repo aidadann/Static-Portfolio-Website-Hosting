@@ -44,13 +44,13 @@ export function SpotlightCard({ children, className = "" }: { children: React.Re
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden rounded-2xl bg-card border border-card-border hover:border-accent/50 hover:shadow-[0_0_20px_rgba(209,168,79,0.1)] transition-all ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-card border border-card-border hover:border-accent/50 hover:shadow-[0_0_20px_rgba(255,0,51,0.1)] transition-all ${className}`}
     >
       <motion.div
         className="pointer-events-none absolute -inset-px transition duration-300 z-0"
         animate={{ opacity }}
         style={{
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(209,168,79,0.15), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,0,51,0.15), transparent 40%)`,
         }}
       />
       <div className="relative z-10 h-full">{children}</div>

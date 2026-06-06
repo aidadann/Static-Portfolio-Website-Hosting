@@ -16,7 +16,7 @@ export function Professional() {
       className="max-w-6xl mx-auto px-4 py-24 pb-48"
     >
       <div className="mb-24">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Education</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Education</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         <div className="relative pl-8 ml-4">
@@ -30,13 +30,13 @@ export function Professional() {
           />
 
           <motion.div
-            className="absolute w-4 h-4 bg-accent rounded-full -left-[7.5px] top-1 shadow-[0_0_10px_rgba(209,168,79,0.8)]"
+            className="absolute w-4 h-4 bg-accent rounded-full -left-[7.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           />
-          <h3 className="font-cinzel text-2xl font-bold text-white mb-1">Bachelor of Computer Science (Computer Network and Security)</h3>
+          <h3 className="text-2xl font-bold text-white mb-1">Bachelor of Computer Science (Computer Network and Security)</h3>
           <p className="text-accent font-medium mb-4">Universiti Teknologi Malaysia • 2022 - 2026</p>
           <p className="text-muted leading-relaxed max-w-3xl">
             Current CGPA: 3.77 <br />
@@ -46,7 +46,7 @@ export function Professional() {
       </div>
 
       <div className="mb-24">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Work Experience</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Work Experience</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         <div className="relative pl-8 ml-4 space-y-12">
@@ -62,13 +62,13 @@ export function Professional() {
           {/* Experience Item 1 */}
           <div className="relative">
             <motion.div
-              className="absolute w-4 h-4 bg-accent rounded-full -left-[39.5px] top-1 shadow-[0_0_10px_rgba(209,168,79,0.8)]"
+              className="absolute w-4 h-4 bg-accent rounded-full -left-[39.5px] top-1 shadow-[0_0_10px_rgba(255,0,51,0.8)]"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
             />
-            <h3 className="font-cinzel text-2xl font-bold text-white mb-1">Software Tester Intern</h3>
+            <h3 className="text-2xl font-bold text-white mb-1">Software Tester Intern</h3>
             <p className="text-accent font-medium mb-4">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
             <p className="text-muted leading-relaxed max-w-3xl">
               Performed User Acceptance Testing (UAT), regression, sanity, and back-testing for AmBank's digital banking platform (AmOnline).<br />
@@ -81,7 +81,7 @@ export function Professional() {
       </div>
 
       <div className="mb-24">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Technical Skills</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Technical Skills</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -98,7 +98,7 @@ export function Professional() {
             >
               <SpotlightCard className="p-6 h-full">
                 <skill.icon className="w-8 h-8 text-accent mb-4" />
-                <h3 className="font-cinzel text-lg font-semibold text-white mb-2">{skill.label}</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">{skill.label}</h3>
                 <p className="text-sm text-muted">{skill.desc}</p>
               </SpotlightCard>
             </motion.div>
@@ -107,7 +107,7 @@ export function Professional() {
       </div>
 
       <div className="mb-32">
-        <h2 className="font-cinzel text-4xl font-bold text-white mb-4 tracking-tight">Featured Projects</h2>
+        <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Featured Projects</h2>
         <div className="h-1 w-20 bg-accent mb-12 rounded-full" />
         <ProjectGrid />
       </div>

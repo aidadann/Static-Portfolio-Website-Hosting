@@ -42,7 +42,7 @@ export function ProjectGrid() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 z-0 pointer-events-none" />
 
             <div className="z-10">
-              <h3 className="font-cinzel text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
                 {project.title}
               </h3>
               <p className="text-muted text-sm mb-6 leading-relaxed">

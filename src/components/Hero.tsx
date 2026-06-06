@@ -30,7 +30,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="font-cinzel text-5xl md:text-7xl lg:text-[5rem] font-black tracking-tighter text-white mb-6 leading-tight"
+            className="text-5xl md:text-7xl lg:text-[5rem] font-black tracking-tighter text-white mb-6 leading-tight"
           >
             Hello I'm <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover">
@@ -57,7 +57,7 @@ export function Hero() {
               href="https://thankful-sky-05855b100.7.azurestaticapps.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-accent-hover transition-colors shadow-[0_0_20px_rgba(209,168,79,0.4)]"
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-semibold hover:bg-accent-hover transition-colors shadow-[0_0_20px_rgba(255,0,51,0.4)]"
             >
               <FileText className="w-5 h-5" />
               View Cloud Resume

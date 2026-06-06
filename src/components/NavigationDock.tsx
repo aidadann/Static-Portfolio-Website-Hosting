@@ -1,15 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Briefcase, Globe } from "lucide-react";
+import { User, Briefcase, Globe, Gamepad2 } from "lucide-react";
 import clsx from "clsx";
 
 export function NavigationDock({
   activeTab,
   setActiveTab,
+  onSecretClick,
 }: {
   activeTab: "professional" | "personal";
   setActiveTab: (tab: "professional" | "personal") => void;
+  onSecretClick: () => void;
 }) {
   return (
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
@@ -29,7 +31,7 @@ export function NavigationDock({
           {activeTab === "professional" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(209,168,79,0.5)] -z-10"
+              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
@@ -47,7 +49,7 @@ export function NavigationDock({
           {activeTab === "personal" && (
             <motion.div
               layoutId="nav-bg"
-              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(209,168,79,0.5)] -z-10"
+              className="absolute inset-0 bg-accent rounded-full shadow-[0_0_15px_rgba(255,0,51,0.5)] -z-10"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}
@@ -57,8 +59,11 @@ export function NavigationDock({
         
         <div className="w-px h-6 bg-card-border mx-2" />
         
-        <button className="flex items-center justify-center w-10 h-10 rounded-full text-muted hover:text-white hover:bg-card-border transition-colors">
-          <Globe className="w-4 h-4" />
+        <button 
+          onClick={onSecretClick}
+          className="flex items-center justify-center w-10 h-10 rounded-full text-muted hover:text-white hover:bg-card-border transition-colors group"
+        >
+          <Gamepad2 className="w-4 h-4 group-hover:text-accent transition-colors" />
         </button>
       </motion.div>
     </div>

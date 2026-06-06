@@ -93,7 +93,7 @@ export function Contact() {
 
             <button
               type="submit"
-              className="mt-2 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-accent text-white font-bold hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(209,168,79,0.4)] transition-all"
+              className="mt-2 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-accent text-white font-bold hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(255,0,51,0.4)] transition-all"
             >
               Send Message
               <Send className="w-4 h-4 ml-1" />
