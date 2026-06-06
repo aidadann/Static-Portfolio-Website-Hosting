@@ -24,7 +24,7 @@ export function Hero() {
         >
           <div className="absolute inset-0 bg-accent mix-blend-overlay z-10 opacity-40" />
           <Image
-            src="/avatar.jpg"
+            src="/profile.jpg"
             alt="Aidan Andrew Daniel"
             fill
             className="object-cover grayscale contrast-125"
@@ -52,7 +52,7 @@ export function Hero() {
             className="text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter text-white mb-8 leading-none uppercase italic transform -skew-x-12 drop-shadow-[8px_8px_0_rgba(255,0,60,1)]"
           >
             <span className="p5-glitch-hover inline-block transition-transform duration-300 hover:scale-105">
-              AIDAN
+              AIDAN ANDREW DANIEL
             </span>
           </motion.h1>
 

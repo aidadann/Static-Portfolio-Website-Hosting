@@ -29,9 +29,9 @@ export function Professional() {
             transition={{ duration: 1.5, ease: "circOut" }}
           />
 
-          <div className="p5-panel bg-black noise-overlay border-4 border-white p-8 shadow-[12px_12px_0_rgba(255,0,60,1)] ml-4 hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0_rgba(255,255,0,1)] transition-all">
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-wide text-white mb-2 transform -skew-x-6">Bachelor of Computer Science</h3>
-            <p className="text-secondary font-black uppercase text-lg tracking-widest mb-4 border-b-4 border-accent pb-2 inline-block transform -skew-x-6">Universiti Teknologi Malaysia • 2022 - 2026</p>
+          <div className="p5-panel bg-black noise-overlay border-4 border-white px-12 py-8 md:px-16 shadow-[12px_12px_0_rgba(255,0,60,1)] ml-4 hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0_rgba(255,255,0,1)] transition-all">
+            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-wide text-white mb-2 transform -skew-x-6 origin-left">Bachelor of Computer Science</h3>
+            <p className="text-secondary font-black uppercase text-lg tracking-widest mb-4 border-b-4 border-accent pb-2 inline-block transform -skew-x-6 origin-left">Universiti Teknologi Malaysia • 2022 - 2026</p>
             <p className="text-white font-bold leading-relaxed max-w-3xl font-sans text-xl relative z-20">
               Current CGPA: 3.77 <br />
               Athletics team of UTM
@@ -56,12 +56,12 @@ export function Professional() {
           />
 
           {/* Experience Item 1 */}
-          <div className="p5-panel bg-black noise-overlay border-4 border-white p-8 shadow-[12px_12px_0_rgba(255,0,60,1)] ml-4 hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0_rgba(255,255,0,1)] transition-all relative">
+          <div className="p5-panel bg-black noise-overlay border-4 border-white px-12 py-8 md:px-16 shadow-[12px_12px_0_rgba(255,0,60,1)] ml-4 hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0_rgba(255,255,0,1)] transition-all relative">
             <div className="absolute top-0 right-0 p-4 opacity-20 pointer-events-none">
               <span className="text-9xl font-black text-accent transform -skew-x-12 inline-block">01</span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-wide text-white mb-2 transform -skew-x-6 relative z-20">Software Tester Intern</h3>
-            <p className="text-secondary font-black uppercase text-lg tracking-widest mb-4 border-b-4 border-accent pb-2 inline-block transform -skew-x-6 relative z-20">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
+            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-wide text-white mb-2 transform -skew-x-6 origin-left relative z-20">Software Tester Intern</h3>
+            <p className="text-secondary font-black uppercase text-lg tracking-widest mb-4 border-b-4 border-accent pb-2 inline-block transform -skew-x-6 origin-left relative z-20">AmBank (M) Berhad • Oct 2025 - Feb 2026</p>
             <p className="text-white font-bold font-sans text-lg leading-relaxed max-w-3xl relative z-20">
               Performed User Acceptance Testing (UAT), regression, sanity, and back-testing for AmBank's digital banking platform (AmOnline).<br />
               <span className="block mt-4 text-black p5-tag bg-white px-3 py-1 inline-block font-black uppercase mb-2">• Logged, documented, and tracked defects using OpenText ALM.</span><br />
