@@ -7,6 +7,12 @@ import clsx from "clsx";
 
 const PROJECTS = [
   {
+    title: "Intellecta AI",
+    description: "Full-stack AI educational platform. Swallows PDFs and generates spaced-repetition flashcards, interactive exercises, and Mermaid.js visual diagrams.",
+    tags: ["React", "FastAPI", "Gemini 2.5", "Tailwind"],
+    github: "https://github.com/aidadann/Intellecta",
+  },
+  {
     title: "Blockchain Investment Tracker",
     description: "Hybrid on-chain/off-chain system. Built secure Solidity smart contracts to permanently ledger investment records. Developed robust REST API in Laravel 11 for rapid caching.",
     tags: ["Solidity", "Laravel 11", "Vue 3", "Hardhat"],
