@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Trophy, Clock, Skull, Sword, Map, Ghost, Package, Heart, Car, Home } from "lucide-react";
 import Image from "next/image";
@@ -22,6 +23,12 @@ const GAMES = [
 ];
 
 export function Mancave({ onBack }: MancaveProps) {
+  const [tappedId, setTappedId] = useState<number | null>(null);
+
+  const handleTap = (id: number) => {
+    setTappedId(prev => prev === id ? null : id);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -62,40 +69,62 @@ export function Mancave({ onBack }: MancaveProps) {
 
         {/* Diamond Trophy Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-12 p-2 md:p-4 justify-items-center relative z-10 max-w-6xl">
-          {GAMES.map((game, i) => (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + i * 0.05 }}
-              key={game.id}
-              className="group relative w-32 h-32 md:w-48 md:h-48 cursor-crosshair"
-            >
-              {/* Diamond Container */}
-              <div className="absolute inset-0 bg-black border-2 md:border-4 border-[#D4AF37] shadow-[4px_4px_0_rgba(0,0,0,0.8)] md:shadow-[10px_10px_0_rgba(0,0,0,0.8)] transition-all duration-500 transform rotate-45 group-hover:bg-[#D4AF37] group-hover:scale-110 group-hover:rotate-0 group-hover:border-white overflow-hidden z-10">
-                {/* Normal State: Ghostly Outline */}
-                <div className="absolute inset-0 flex items-center justify-center -rotate-45 group-hover:opacity-0 transition-opacity duration-300">
-                  <game.icon className="w-10 h-10 md:w-16 md:h-16 text-[#D4AF37]/50 drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]" />
+          {GAMES.map((game, i) => {
+            const isActive = tappedId === game.id;
+            return (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + i * 0.05 }}
+                key={game.id}
+                onClick={() => handleTap(game.id)}
+                className={`group relative w-32 h-32 md:w-48 md:h-48 cursor-crosshair ${isActive ? 'z-40' : ''}`}
+              >
+                {/* Diamond Container */}
+                <div className={`absolute inset-0 bg-black border-2 md:border-4 border-[#D4AF37] shadow-[4px_4px_0_rgba(0,0,0,0.8)] md:shadow-[10px_10px_0_rgba(0,0,0,0.8)] transition-all duration-500 transform overflow-hidden z-10 ${
+                  isActive 
+                    ? 'rotate-0 scale-110 bg-[#D4AF37] border-white' 
+                    : 'rotate-45 md:group-hover:bg-[#D4AF37] md:group-hover:scale-110 md:group-hover:rotate-0 md:group-hover:border-white'
+                }`}>
+                  {/* Normal State: Ghostly Outline */}
+                  <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                    isActive 
+                      ? 'opacity-0' 
+                      : '-rotate-45 md:group-hover:opacity-0'
+                  }`}>
+                    <game.icon className="w-10 h-10 md:w-16 md:h-16 text-[#D4AF37]/50 drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]" />
+                  </div>
+
+                  {/* Hover/Tap State: High-res Background Image */}
+                  <div className={`absolute inset-0 transition-opacity duration-500 bg-black ${
+                    isActive 
+                      ? 'opacity-100' 
+                      : 'opacity-0 md:group-hover:opacity-100'
+                  }`}>
+                    <Image src={game.img} alt={game.title} fill className={`object-cover opacity-60 mix-blend-luminosity transition-all duration-500 ${
+                      isActive ? 'grayscale-0' : 'grayscale md:group-hover:grayscale-0'
+                    }`} onError={(e) => e.currentTarget.style.display = 'none'} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  </div>
                 </div>
 
-                {/* Hover State: High-res Background Image */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black">
-                  <Image src={game.img} alt={game.title} fill className="object-cover opacity-60 mix-blend-luminosity grayscale group-hover:grayscale-0 transition-all duration-500" onError={(e) => e.currentTarget.style.display = 'none'} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                {/* Popup Info (Outside the diamond so it doesn't get clipped) */}
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 md:mt-8 w-48 md:w-64 transition-opacity duration-300 z-50 pointer-events-none flex flex-col items-center ${
+                  isActive 
+                    ? 'opacity-100' 
+                    : 'opacity-0 md:group-hover:opacity-100'
+                }`}>
+                  <div className="bg-white p5-tag px-3 py-1 border-2 border-black mb-2 shadow-[4px_4px_0_rgba(0,0,0,1)]">
+                    <p className="font-black text-xs text-black uppercase tracking-widest">{game.hours}</p>
+                  </div>
+                  <div className="bg-black p5-panel p-3 border-2 border-[#D4AF37] text-center shadow-[6px_6px_0_rgba(212,175,55,1)]">
+                    <h3 className="text-sm md:text-lg font-black uppercase text-white mb-2">{game.title}</h3>
+                    <p className="font-bold text-[10px] text-gray-300 uppercase leading-tight italic">&quot;{game.desc}&quot;</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Popup Info (Outside the diamond so it doesn't get clipped) */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 md:mt-8 w-48 md:w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 pointer-events-none flex flex-col items-center">
-                <div className="bg-white p5-tag px-3 py-1 border-2 border-black mb-2 shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                  <p className="font-black text-xs text-black uppercase tracking-widest">{game.hours}</p>
-                </div>
-                <div className="bg-black p5-panel p-3 border-2 border-[#D4AF37] text-center shadow-[6px_6px_0_rgba(212,175,55,1)]">
-                  <h3 className="text-lg font-black uppercase text-white mb-2">{game.title}</h3>
-                  <p className="font-bold text-[10px] text-gray-300 uppercase leading-tight italic">"{game.desc}"</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </motion.div>
