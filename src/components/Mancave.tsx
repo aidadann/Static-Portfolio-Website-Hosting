@@ -50,31 +50,31 @@ export function Mancave({ onBack }: MancaveProps) {
           transition={{ delay: 0.2 }}
           className="mb-24 text-center flex flex-col items-center"
         >
-          <div className="p5-panel bg-black border-[4px] border-[#D4AF37] px-16 py-6 shadow-[12px_12px_0_rgba(212,175,55,0.4)] transform -skew-x-12">
-            <h1 className="text-5xl md:text-8xl font-black tracking-widest text-[#D4AF37] uppercase drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
+          <div className="p5-panel bg-black border-2 md:border-[4px] border-[#D4AF37] px-6 py-3 md:px-16 md:py-6 shadow-[6px_6px_0_rgba(212,175,55,0.4)] md:shadow-[12px_12px_0_rgba(212,175,55,0.4)] transform -skew-x-6 md:-skew-x-12">
+            <h1 className="text-3xl md:text-8xl font-black tracking-widest text-[#D4AF37] uppercase drop-shadow-[2px_2px_0_rgba(0,0,0,1)] md:drop-shadow-[4px_4px_0_rgba(0,0,0,1)]">
               HALL OF FAME
             </h1>
           </div>
-          <div className="p5-tag bg-white text-black px-8 py-2 mt-6 text-2xl font-black tracking-[0.3em] shadow-[6px_6px_0_rgba(0,0,0,1)]">
+          <div className="p5-tag bg-white text-black px-4 py-1 md:px-8 md:py-2 mt-4 md:mt-6 text-sm md:text-2xl font-black tracking-[0.2em] md:tracking-[0.3em] shadow-[3px_3px_0_rgba(0,0,0,1)] md:shadow-[6px_6px_0_rgba(0,0,0,1)]">
             GAMES GALLERY
           </div>
         </motion.div>
 
         {/* Diamond Trophy Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 p-4 justify-items-center relative z-10 max-w-6xl">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-12 p-2 md:p-4 justify-items-center relative z-10 max-w-6xl">
           {GAMES.map((game, i) => (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.05 }}
               key={game.id}
-              className="group relative w-48 h-48 cursor-crosshair"
+              className="group relative w-32 h-32 md:w-48 md:h-48 cursor-crosshair"
             >
               {/* Diamond Container */}
-              <div className="absolute inset-0 bg-black border-4 border-[#D4AF37] shadow-[10px_10px_0_rgba(0,0,0,0.8)] transition-all duration-500 transform rotate-45 group-hover:bg-[#D4AF37] group-hover:scale-110 group-hover:rotate-0 group-hover:border-white overflow-hidden z-10">
+              <div className="absolute inset-0 bg-black border-2 md:border-4 border-[#D4AF37] shadow-[4px_4px_0_rgba(0,0,0,0.8)] md:shadow-[10px_10px_0_rgba(0,0,0,0.8)] transition-all duration-500 transform rotate-45 group-hover:bg-[#D4AF37] group-hover:scale-110 group-hover:rotate-0 group-hover:border-white overflow-hidden z-10">
                 {/* Normal State: Ghostly Outline */}
                 <div className="absolute inset-0 flex items-center justify-center -rotate-45 group-hover:opacity-0 transition-opacity duration-300">
-                  <game.icon className="w-16 h-16 text-[#D4AF37]/50 drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]" />
+                  <game.icon className="w-10 h-10 md:w-16 md:h-16 text-[#D4AF37]/50 drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]" />
                 </div>
 
                 {/* Hover State: High-res Background Image */}
@@ -85,7 +85,7 @@ export function Mancave({ onBack }: MancaveProps) {
               </div>
 
               {/* Popup Info (Outside the diamond so it doesn't get clipped) */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-8 w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 pointer-events-none flex flex-col items-center">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 md:mt-8 w-48 md:w-64 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 pointer-events-none flex flex-col items-center">
                 <div className="bg-white p5-tag px-3 py-1 border-2 border-black mb-2 shadow-[4px_4px_0_rgba(0,0,0,1)]">
                   <p className="font-black text-xs text-black uppercase tracking-widest">{game.hours}</p>
                 </div>

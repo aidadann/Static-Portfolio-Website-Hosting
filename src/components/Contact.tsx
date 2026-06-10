@@ -6,12 +6,12 @@ import { Mail, Send } from "lucide-react";
 export function Contact() {
   return (
     <div className="max-w-4xl mx-auto px-4 noise-overlay">
-      <div className="p5-panel bg-[#dfdfdf] border-[8px] border-black p-8 md:p-12 shadow-[16px_16px_0_rgba(255,0,60,1)] transform -rotate-1">
+      <div className="p5-panel bg-[#dfdfdf] border-4 md:border-[8px] border-black p-4 md:p-12 shadow-[8px_8px_0_rgba(255,0,60,1)] md:shadow-[16px_16px_0_rgba(255,0,60,1)] transform -rotate-1">
         
         {/* Ransom Note Title */}
-        <div className="flex flex-wrap gap-2 mb-12 justify-center">
+        <div className="flex flex-wrap gap-1 md:gap-2 mb-6 md:mb-12 justify-center">
           {["S", "E", "N", "D", " ", "U", "S", " ", "A", " ", "C", "A", "L", "L", "I", "N", "G", " ", "C", "A", "R", "D"].map((char, i) => {
-            if (char === " ") return <div key={i} className="w-4" />;
+            if (char === " ") return <div key={i} className="w-2 md:w-4" />;
             const isRed = i % 3 === 0;
             const isYellow = i % 5 === 0;
             const bgClass = isRed ? "bg-accent text-white" : isYellow ? "bg-secondary text-black" : "bg-black text-white";
@@ -21,7 +21,7 @@ export function Contact() {
               <motion.span
                 key={i}
                 whileHover={{ scale: 1.2, rotate: 0 }}
-                className={`text-3xl md:text-5xl font-black uppercase flex items-center justify-center w-10 h-12 md:w-14 md:h-16 border-2 border-black transform ${rotation} ${bgClass} ${fontClass} shadow-[4px_4px_0_rgba(0,0,0,0.5)]`}
+                className={`text-xl md:text-5xl font-black uppercase flex items-center justify-center w-7 h-9 md:w-14 md:h-16 border md:border-2 border-black transform ${rotation} ${bgClass} ${fontClass} shadow-[2px_2px_0_rgba(0,0,0,0.5)] md:shadow-[4px_4px_0_rgba(0,0,0,0.5)]`}
               >
                 {char}
               </motion.span>
@@ -37,7 +37,7 @@ export function Contact() {
             <input
               type="text"
               placeholder="YOUR CODENAME"
-              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-1 shadow-[6px_6px_0_rgba(0,0,0,1)]"
+              className="w-full bg-white border-2 md:border-4 border-black p-3 md:p-4 text-base md:text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-1 shadow-[3px_3px_0_rgba(0,0,0,1)] md:shadow-[6px_6px_0_rgba(0,0,0,1)]"
             />
           </div>
 
@@ -48,7 +48,7 @@ export function Contact() {
             <input
               type="email"
               placeholder="HIDEOUT@METAVERSE.COM"
-              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform -rotate-1 shadow-[6px_6px_0_rgba(0,0,0,1)]"
+              className="w-full bg-white border-2 md:border-4 border-black p-3 md:p-4 text-base md:text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform -rotate-1 shadow-[3px_3px_0_rgba(0,0,0,1)] md:shadow-[6px_6px_0_rgba(0,0,0,1)]"
             />
           </div>
 
@@ -59,7 +59,7 @@ export function Contact() {
             <textarea
               rows={4}
               placeholder="WE ARE COMING FOR YOU..."
-              className="w-full bg-white border-4 border-black p-4 text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-2 shadow-[6px_6px_0_rgba(0,0,0,1)] resize-none"
+              className="w-full bg-white border-2 md:border-4 border-black p-3 md:p-4 text-base md:text-xl font-black uppercase text-black placeholder:text-gray-400 focus:outline-none focus:border-accent transform rotate-2 shadow-[3px_3px_0_rgba(0,0,0,1)] md:shadow-[6px_6px_0_rgba(0,0,0,1)] resize-none"
             />
           </div>
 
@@ -67,7 +67,7 @@ export function Contact() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full p5-button bg-accent text-white font-black text-3xl md:text-4xl uppercase tracking-[0.2em] py-6 border-4 border-black shadow-[10px_10px_0_rgba(0,0,0,1)] flex items-center justify-center gap-4 group transition-colors hover:bg-black"
+            className="w-full p5-button bg-accent text-white font-black text-xl md:text-4xl uppercase tracking-[0.1em] md:tracking-[0.2em] py-4 md:py-6 border-2 md:border-4 border-black shadow-[5px_5px_0_rgba(0,0,0,1)] md:shadow-[10px_10px_0_rgba(0,0,0,1)] flex items-center justify-center gap-2 md:gap-4 group transition-colors hover:bg-black"
           >
             <Mail className="w-8 h-8 transform -rotate-12 group-hover:rotate-0 transition-transform" />
             <span className="transform -skew-x-12">DISPATCH</span>
